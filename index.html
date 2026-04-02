@@ -507,7 +507,7 @@ async function callGemini(msg){
   // 不使用 systemInstruction 也不使用 tools，避免 CORS preflight 被擋
   const body={
     contents,
-    generationConfig:{temperature:0.7,maxOutputTokens:1500}
+    generationConfig:{temperature:0.7,maxOutputTokens:4096}
   };
   // 這是目前經測試在 GitHub/Vercel 環境下最穩定的 v1beta 呼叫路徑
 const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
