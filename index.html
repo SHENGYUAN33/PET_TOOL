@@ -3,237 +3,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>上聯寵物展 AI 逛展神器 🐱</title>
+<title>上聯寵物展 AI 逛展神器 v5</title>
 <style>
 :root{
-  --bg:#FDF8F4;--card:#FFFFFF;--border:#EDE8E3;--text:#2C1810;--text2:#7A6458;
+  --bg:#FDF8F4;--card:#fff;--border:#EDE8E3;--text:#2C1810;--text2:#7A6458;
   --accent:#E8623A;--green:#3D8B6E;--green-bg:#EAF5EF;
   --red:#C0392B;--red-bg:#FDECEA;--amber:#D4860A;--amber-bg:#FEF5E7;
   --blue:#2E6DA4;--blue-bg:#EBF3FB;--purple:#7B52AB;--purple-bg:#F3EEFB;
-  --gemini:#1A73E8;--gemini-bg:#E8F0FE;
-  --radius:14px;
+  --gemini:#1A73E8;--gemini-bg:#E8F0FE;--radius:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
-/* TOP BAR */
-.topbar{background:var(--accent);color:#fff;padding:14px 16px 10px;position:sticky;top:0;z-index:100;}
-.topbar-title{font-size:17px;font-weight:700;}
-.topbar-sub{font-size:11px;opacity:.85;margin-top:2px;}
-
+body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);}
 /* NAV */
-.nav-tabs{display:flex;background:#fff;border-bottom:1.5px solid var(--border);position:sticky;top:60px;z-index:99;overflow-x:auto;}
+.topbar{background:var(--accent);color:#fff;padding:12px 14px 8px;position:sticky;top:0;z-index:100;}
+.topbar-title{font-size:16px;font-weight:700;}
+.topbar-sub{font-size:10px;opacity:.85;margin-top:1px;}
+.nav-tabs{display:flex;background:#fff;border-bottom:1.5px solid var(--border);position:sticky;top:52px;z-index:99;overflow-x:auto;}
 .nav-tabs::-webkit-scrollbar{display:none;}
-.nav-tab{flex:none;padding:11px 12px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;border-bottom:2.5px solid transparent;transition:all .2s;}
+.nav-tab{flex:none;padding:10px 11px;font-size:11px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;border-bottom:2.5px solid transparent;}
 .nav-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
-
-.page{display:none;padding:12px;}
+.page{display:none;padding:10px;}
 .page.active{display:block;}
-
-/* API KEY SETUP */
-.setup-banner{background:var(--gemini-bg);border:1.5px solid var(--gemini);border-radius:var(--radius);padding:14px;margin-bottom:12px;}
-.setup-title{font-size:14px;font-weight:700;color:var(--gemini);margin-bottom:6px;}
-.setup-row{display:flex;gap:8px;align-items:center;margin-top:8px;}
-.api-input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:monospace;}
+/* SETUP BANNER */
+.setup-banner{background:var(--gemini-bg);border:1.5px solid var(--gemini);border-radius:var(--radius);padding:12px;margin-bottom:10px;}
+.setup-title{font-size:13px;font-weight:700;color:var(--gemini);margin-bottom:4px;}
+.setup-row{display:flex;gap:6px;margin-top:6px;}
+.api-input{flex:1;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:monospace;min-width:0;}
 .api-input:focus{outline:none;border-color:var(--gemini);}
-.api-save-btn{padding:9px 16px;background:var(--gemini);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;}
-.api-status{font-size:12px;margin-top:6px;}
-.api-ok{color:var(--green);}
-.api-no{color:var(--red);}
-
+.api-save-btn{padding:8px 12px;background:var(--gemini);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;}
+.api-status{font-size:11px;margin-top:4px;}
 /* SEARCH */
 .search-wrap{position:relative;margin-bottom:8px;}
-.search-input{width:100%;padding:11px 44px 11px 40px;border:1.5px solid var(--border);border-radius:30px;font-size:14px;background:#fff;color:var(--text);outline:none;transition:border-color .2s;}
-.search-input:focus{border-color:#aaa;}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;}
-.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text2);cursor:pointer;display:none;background:none;border:none;}
-.suggest-box{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:8px;display:none;}
-.suggest-item{padding:9px 14px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;border-bottom:.5px solid var(--border);}
-.suggest-item:last-child{border:none;}
-.suggest-item:active{background:var(--amber-bg);}
-.st{font-size:10px;padding:2px 7px;border-radius:6px;white-space:nowrap;}
-.st-brand{background:var(--blue-bg);color:var(--blue);}
-.st-kw{background:var(--green-bg);color:var(--green);}
+.search-input{width:100%;padding:10px 38px 10px 38px;border:1.5px solid var(--border);border-radius:30px;font-size:14px;background:#fff;color:var(--text);outline:none;}
+.search-input:focus{border-color:var(--amber);}
+.si{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none;}
+.sc{position:absolute;right:11px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--text2);cursor:pointer;display:none;background:none;border:none;}
+.sug-box{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:8px;display:none;}
+.sug-item{padding:8px 12px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:7px;border-bottom:.5px solid var(--border);}
+.sug-item:last-child{border:none;}
+.sug-item:active{background:var(--amber-bg);}
+.st{font-size:10px;padding:2px 6px;border-radius:5px;white-space:nowrap;}
+.st-b{background:var(--blue-bg);color:var(--blue);}
+.st-k{background:var(--green-bg);color:var(--green);}
 .st-ai{background:var(--gemini-bg);color:var(--gemini);}
-.suggest-count{font-size:11px;color:var(--text2);margin-left:auto;}
-
+.sug-cnt{font-size:11px;color:var(--text2);margin-left:auto;}
 /* FILTER */
-.filter-area{background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin-bottom:10px;}
-.filter-row{display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;}
-.filter-row:last-child{margin-bottom:0;}
-.filter-label{font-size:11px;color:var(--text2);font-weight:600;padding-top:5px;min-width:40px;flex-shrink:0;}
-.chips-row{display:flex;flex-wrap:wrap;gap:5px;}
-.chip{display:inline-flex;align-items:center;padding:4px 11px;border-radius:20px;font-size:12px;font-weight:500;background:#fff;border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.filter-area{background:#fff;border:1px solid var(--border);border-radius:12px;padding:9px 11px;margin-bottom:9px;}
+.fr{display:flex;align-items:flex-start;gap:5px;margin-bottom:5px;}
+.fr:last-child{margin-bottom:0;}
+.fl{font-size:11px;color:var(--text2);font-weight:600;padding-top:4px;min-width:36px;flex-shrink:0;}
+.chips{display:flex;flex-wrap:wrap;gap:4px;}
+.chip{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;background:#fff;border:1.5px solid var(--border);color:var(--text2);cursor:pointer;white-space:nowrap;}
 .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
-.chip.active-green{background:var(--green);border-color:var(--green);color:#fff;}
-.chip.active-amber{background:var(--amber);border-color:var(--amber);color:#fff;}
-.active-filters{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
-.af-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;}
-
+.chip.act-g{background:var(--green);border-color:var(--green);color:#fff;}
+.chip.act-a{background:var(--amber);border-color:var(--amber);color:#fff;}
+.af-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px;}
+.af{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;font-size:11px;cursor:pointer;}
 /* BRAND CARDS */
-.result-count{font-size:12px;color:var(--text2);margin-bottom:8px;}
-.brand-grid{display:flex;flex-direction:column;gap:8px;}
-.brand-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:13px 14px;cursor:pointer;}
-.brand-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
-.brand-name{font-size:15px;font-weight:700;flex:1;}
-.brand-booth{font-size:11px;background:var(--amber-bg);color:var(--amber);padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:600;}
-.brand-cats{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;}
-.cat-tag{font-size:11px;padding:2px 8px;border-radius:8px;background:var(--blue-bg);color:var(--blue);font-weight:500;}
-.brand-meta{margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.cp-stars{color:var(--amber);font-size:13px;}
-.must-buy{font-size:11px;background:var(--red-bg);color:var(--red);padding:2px 8px;border-radius:8px;font-weight:600;}
-.kitten-ok{font-size:11px;background:var(--green-bg);color:var(--green);padding:2px 8px;border-radius:8px;font-weight:600;}
-.kitten-warn{font-size:11px;background:var(--amber-bg);color:var(--amber);padding:2px 8px;border-radius:8px;font-weight:600;}
-.brand-snippet{font-size:12px;color:var(--text2);margin-top:6px;line-height:1.5;}
-.card-links{display:flex;gap:5px;margin-top:10px;padding-top:8px;border-top:.5px solid var(--border);flex-wrap:wrap;}
-.cl-btn{font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--border);color:var(--text2);background:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:3px;}
-.cl-btn.shopee{color:var(--accent);border-color:var(--accent);background:#FFF3EF;}
-.cl-btn.web{color:var(--blue);border-color:var(--blue);background:var(--blue-bg);}
-.cl-btn.compare{color:var(--purple);border-color:var(--purple);background:var(--purple-bg);}
-.cl-btn.compare.added{background:var(--purple);color:#fff;}
-.cl-btn.ai-search{color:var(--gemini);border-color:var(--gemini);background:var(--gemini-bg);}
-
-/* AI CHAT */
-.ai-panel{background:#fff;border:1.5px solid var(--gemini);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
-.ai-panel-header{background:var(--gemini);color:#fff;padding:10px 14px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
-.ai-messages{padding:12px;display:flex;flex-direction:column;gap:10px;max-height:380px;overflow-y:auto;}
-.ai-msg{max-width:88%;line-height:1.6;font-size:13px;}
-.ai-msg.user{align-self:flex-end;background:var(--gemini);color:#fff;padding:9px 13px;border-radius:16px 16px 4px 16px;}
-.ai-msg.bot{align-self:flex-start;background:var(--gemini-bg);color:var(--text);padding:9px 13px;border-radius:4px 16px 16px 16px;border:.5px solid #C5D8FD;}
-.ai-msg.bot b{color:var(--gemini);}
-.ai-msg.loading{color:var(--text2);font-style:italic;}
-.ai-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--border);background:#FAFCFF;}
-.ai-text-input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:20px;font-size:13px;outline:none;}
-.ai-text-input:focus{border-color:var(--gemini);}
-.ai-send-btn{background:var(--gemini);color:#fff;border:none;border-radius:20px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;}
-.ai-send-btn:disabled{opacity:.5;cursor:default;}
-.ai-quick-btns{display:flex;flex-wrap:wrap;gap:5px;padding:8px 12px 0;}
-.ai-quick{font-size:11px;padding:4px 10px;border-radius:20px;background:var(--gemini-bg);color:var(--gemini);border:.5px solid #C5D8FD;cursor:pointer;white-space:nowrap;}
-
+.rc{font-size:11px;color:var(--text2);margin-bottom:7px;}
+.bgrid{display:flex;flex-direction:column;gap:7px;}
+.bcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 13px;cursor:pointer;}
+.bh{display:flex;align-items:flex-start;justify-content:space-between;gap:7px;}
+.bn{font-size:14px;font-weight:700;flex:1;}
+.bb{font-size:11px;background:var(--amber-bg);color:var(--amber);padding:2px 7px;border-radius:9px;white-space:nowrap;font-weight:600;}
+.bcats{margin-top:5px;display:flex;flex-wrap:wrap;gap:3px;}
+.ct{font-size:11px;padding:2px 7px;border-radius:7px;background:var(--blue-bg);color:var(--blue);font-weight:500;}
+.bm{margin-top:7px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.cps{color:var(--amber);font-size:12px;}
+.mb{font-size:11px;background:var(--red-bg);color:var(--red);padding:2px 7px;border-radius:7px;font-weight:600;}
+.ko{font-size:11px;background:var(--green-bg);color:var(--green);padding:2px 7px;border-radius:7px;font-weight:600;}
+.kw{font-size:11px;background:var(--amber-bg);color:var(--amber);padding:2px 7px;border-radius:7px;font-weight:600;}
+.bsnip{font-size:11px;color:var(--text2);margin-top:5px;line-height:1.4;}
+.clinks{display:flex;gap:4px;margin-top:9px;padding-top:7px;border-top:.5px solid var(--border);flex-wrap:wrap;}
+.clb{font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--text2);background:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:2px;}
+.clb.sp{color:var(--accent);border-color:var(--accent);background:#FFF3EF;}
+.clb.wb{color:var(--blue);border-color:var(--blue);background:var(--blue-bg);}
+.clb.cp{color:var(--purple);border-color:var(--purple);background:var(--purple-bg);}
+.clb.cp.added{background:var(--purple);color:#fff;}
+.clb.ai{color:var(--gemini);border-color:var(--gemini);background:var(--gemini-bg);}
 /* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;}
-.modal-overlay.open{display:flex;}
-.modal-sheet{background:var(--bg);border-radius:20px 20px 0 0;width:100%;max-height:88vh;overflow-y:auto;padding:0 0 30px;animation:slideUp .28s ease;}
-@keyframes slideUp{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.modal-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:12px auto 0;}
-.modal-header{padding:14px 16px 10px;border-bottom:1px solid var(--border);}
-.modal-brand-name{font-size:20px;font-weight:800;}
-.modal-booth{font-size:12px;color:var(--amber);font-weight:600;margin-top:3px;}
-.modal-close{float:right;font-size:22px;color:var(--text2);cursor:pointer;background:none;border:none;}
-.modal-cats{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}
-.modal-body{padding:14px 16px;}
-.section-title{font-size:13px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin:14px 0 8px;}
-.section-title:first-child{margin-top:0;}
-.info-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.65;}
-.pro-list li,.con-list li{font-size:13px;line-height:1.65;padding:3px 0;list-style:none;}
-.pro-list li::before{content:'✓ ';color:var(--green);font-weight:700;}
-.con-list li::before{content:'✗ ';color:var(--red);font-weight:700;}
-.highlight-box{background:var(--amber-bg);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:10px 12px;font-size:13px;line-height:1.6;margin-bottom:6px;}
-.add-to-cart-modal{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap;}
-.qty-input,.price-input{padding:7px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;text-align:center;}
-.qty-input{width:60px;}.price-input{width:90px;}
-.item-input{flex:1;min-width:120px;padding:7px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;}
-.btn-add{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer;}
-
+.mov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;}
+.mov.open{display:flex;}
+.msh{background:var(--bg);border-radius:20px 20px 0 0;width:100%;max-height:88vh;overflow-y:auto;padding:0 0 28px;animation:su .26s ease;}
+@keyframes su{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.mhd{width:36px;height:4px;background:var(--border);border-radius:2px;margin:11px auto 0;}
+.mhdr{padding:12px 14px 9px;border-bottom:1px solid var(--border);}
+.mbn{font-size:19px;font-weight:800;}
+.mbo{font-size:11px;color:var(--amber);font-weight:600;margin-top:2px;}
+.mcl{float:right;font-size:21px;color:var(--text2);cursor:pointer;background:none;border:none;}
+.mcats{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.mbody{padding:12px 14px;}
+.stitle{font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin:12px 0 6px;}
+.stitle:first-child{margin-top:0;}
+.ibox{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px 12px;font-size:13px;line-height:1.6;}
+.plist li,.clist li{font-size:13px;line-height:1.6;padding:2px 0;list-style:none;}
+.plist li::before{content:'✓ ';color:var(--green);font-weight:700;}
+.clist li::before{content:'✗ ';color:var(--red);font-weight:700;}
+.hbox{background:var(--amber-bg);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:9px 11px;font-size:13px;line-height:1.55;margin-bottom:5px;}
+.cart-row{display:flex;align-items:center;gap:7px;margin-top:9px;flex-wrap:wrap;}
+.qi{width:56px;padding:6px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;text-align:center;}
+.pi{width:84px;padding:6px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;text-align:center;}
+.ii{flex:1;min-width:100px;padding:6px 9px;border:1.5px solid var(--border);border-radius:7px;font-size:12px;}
+.badd{background:var(--accent);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;}
 /* CART */
-.cart-summary{background:var(--accent);color:#fff;border-radius:var(--radius);padding:16px;margin-bottom:12px;}
-.cart-total-num{font-size:32px;font-weight:800;margin-top:2px;}
-.cart-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;}
-.cart-item-check{width:22px;height:22px;flex-shrink:0;margin-top:1px;accent-color:var(--green);}
-.cart-item-info{flex:1;}
-.cart-item-brand{font-size:11px;color:var(--text2);}
-.cart-item-name{font-size:14px;font-weight:600;margin-top:1px;}
-.cart-item-detail{font-size:12px;color:var(--text2);margin-top:3px;}
-.cart-item-price{font-size:15px;font-weight:700;color:var(--accent);}
-.cart-item-del{background:none;border:none;color:var(--text2);font-size:18px;cursor:pointer;}
-.cart-empty{text-align:center;padding:50px 20px;color:var(--text2);font-size:15px;}
-.ai-cart-btn{width:100%;margin-top:10px;padding:10px;background:var(--gemini-bg);color:var(--gemini);border:1.5px solid var(--gemini);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;}
-
+.cs{background:var(--accent);color:#fff;border-radius:var(--radius);padding:14px;margin-bottom:10px;}
+.ctn{font-size:30px;font-weight:800;margin-top:2px;}
+.ci{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:11px 12px;margin-bottom:7px;display:flex;align-items:flex-start;gap:9px;}
+.cic{width:21px;height:21px;flex-shrink:0;margin-top:1px;accent-color:var(--green);}
+.cii{flex:1;}
+.cibr{font-size:11px;color:var(--text2);}
+.cinm{font-size:13px;font-weight:600;margin-top:1px;}
+.cide{font-size:11px;color:var(--text2);margin-top:2px;}
+.cipr{font-size:14px;font-weight:700;color:var(--accent);}
+.cidl{background:none;border:none;color:var(--text2);font-size:17px;cursor:pointer;}
+.ce{text-align:center;padding:40px 18px;color:var(--text2);font-size:14px;}
+.ai-wide-btn{width:100%;margin-top:8px;padding:9px;background:var(--gemini-bg);color:var(--gemini);border:1.5px solid var(--gemini);border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;}
 /* COMPARE */
-.compare-topbar{background:var(--purple-bg);border:1px solid #D5C6F0;border-radius:var(--radius);padding:14px;margin-bottom:12px;}
-.compare-topbar-title{font-size:16px;font-weight:800;color:var(--purple);}
-.compare-cat-row{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 6px;}
-.ccat{padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;border:1.5px solid #D5C6F0;color:var(--purple);background:#fff;cursor:pointer;}
+.cmp-top{background:var(--purple-bg);border:1px solid #D5C6F0;border-radius:var(--radius);padding:12px;margin-bottom:10px;}
+.cmp-top-title{font-size:15px;font-weight:800;color:var(--purple);}
+.ccat-row{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 4px;}
+.ccat{padding:4px 11px;border-radius:20px;font-size:11px;font-weight:500;border:1.5px solid #D5C6F0;color:var(--purple);background:#fff;cursor:pointer;}
 .ccat.active{background:var(--purple);border-color:var(--purple);color:#fff;}
-.compare-slot{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
-.compare-pill{font-size:12px;padding:4px 10px;border-radius:20px;background:var(--purple-bg);color:var(--purple);border:1px solid #D5C6F0;display:inline-flex;align-items:center;gap:5px;}
-.compare-pill-rm{cursor:pointer;opacity:.7;font-size:14px;}
-.compare-hint{font-size:12px;color:var(--text2);margin-bottom:6px;}
-.ctable-wrap{overflow-x:auto;}
-.ctable{border-collapse:collapse;font-size:12px;min-width:100%;}
-.ctable th{background:var(--purple-bg);color:var(--purple);font-weight:600;padding:9px 10px;border:.5px solid #D5C6F0;font-size:11px;text-align:center;white-space:nowrap;}
-.ctable th.hlbl{background:var(--purple);color:#fff;text-align:left;min-width:90px;}
-.ctable td{padding:8px 10px;border:.5px solid var(--border);text-align:center;vertical-align:middle;}
-.ctable tr:nth-child(even) td{background:#FDFAF8;}
-.ctable td.lbl{text-align:left;font-weight:600;color:var(--text2);background:var(--bg);font-size:11px;white-space:nowrap;}
-.ctable td.sep{background:var(--purple-bg);color:var(--purple);font-weight:700;font-size:11px;text-align:left;padding:5px 10px;}
-.best-val{color:var(--green);font-weight:700;}
-.saving-pos{font-size:10px;color:var(--green);font-weight:700;}
-.saving-neg{font-size:10px;color:var(--red);}
-.price-input-cell{width:72px;padding:5px 6px;border:1.5px solid var(--border);border-radius:6px;font-size:12px;text-align:center;background:#fff;}
-.price-input-cell:focus{outline:none;border-color:var(--accent);}
-.note-input-cell{width:80px;padding:5px 6px;border:1.5px solid var(--border);border-radius:6px;font-size:11px;background:#fff;}
-.link-sm{font-size:10px;padding:3px 9px;border-radius:12px;text-decoration:none;display:inline-block;}
-.link-shopee{background:#FFF3EF;color:var(--accent);border:1px solid var(--accent);}
-.link-web{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue);}
-.ai-compare-btn{width:100%;margin-top:10px;padding:10px;background:var(--gemini-bg);color:var(--gemini);border:1.5px solid var(--gemini);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;}
-
-/* RANKING */
-.rank-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:13px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;}
-.rank-num{font-size:22px;font-weight:900;color:var(--border);width:32px;flex-shrink:0;line-height:1;}
-.rank-num.gold{color:#D4A017;}.rank-num.silver{color:#9E9E9E;}.rank-num.bronze{color:#B5651D;}
-.rank-info{flex:1;}
-.rank-brand{font-size:15px;font-weight:700;}
-.rank-reason{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.5;}
-.rank-score{font-size:12px;font-weight:700;color:var(--green);background:var(--green-bg);padding:2px 9px;border-radius:8px;white-space:nowrap;}
-.sec-header{font-size:16px;font-weight:800;margin:16px 0 8px;}
-.sec-header:first-child{margin-top:0;}
-.warn-card{background:var(--red-bg);border:1px solid #F5C6C2;border-radius:var(--radius);padding:12px 14px;margin-bottom:8px;}
-.warn-title{font-size:14px;font-weight:700;color:var(--red);}
-.warn-body{font-size:13px;margin-top:5px;line-height:1.55;}
+.cmp-slot{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+.cpill{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--purple-bg);color:var(--purple);border:1px solid #D5C6F0;display:inline-flex;align-items:center;gap:4px;}
+.cpill-rm{cursor:pointer;opacity:.7;}
+.chint{font-size:11px;color:var(--text2);margin-bottom:5px;}
+.ctbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.ctbl{border-collapse:collapse;font-size:12px;min-width:100%;}
+.ctbl th{background:var(--purple-bg);color:var(--purple);font-weight:600;padding:8px 9px;border:.5px solid #D5C6F0;font-size:11px;text-align:center;white-space:nowrap;}
+.ctbl th.hl{background:var(--purple);color:#fff;text-align:left;min-width:88px;}
+.ctbl td{padding:7px 9px;border:.5px solid var(--border);text-align:center;vertical-align:middle;}
+.ctbl tr:nth-child(even) td{background:#FDFAF8;}
+.ctbl td.lb{text-align:left;font-weight:600;color:var(--text2);background:var(--bg);font-size:11px;white-space:nowrap;}
+.ctbl td.sep{background:var(--purple-bg);color:var(--purple);font-weight:700;font-size:11px;text-align:left;padding:4px 9px;}
+.bv{color:var(--green);font-weight:700;}
+.sp-pos{font-size:10px;color:var(--green);font-weight:700;}
+.sp-neg{font-size:10px;color:var(--red);}
+.pc{width:68px;padding:4px 5px;border:1.5px solid var(--border);border-radius:5px;font-size:12px;text-align:center;background:#fff;}
+.pc:focus{outline:none;border-color:var(--accent);}
+.nc{width:78px;padding:4px 5px;border:1.5px solid var(--border);border-radius:5px;font-size:11px;background:#fff;}
+.nc:focus{outline:none;border-color:var(--purple);}
+.lsm{font-size:10px;padding:2px 8px;border-radius:10px;text-decoration:none;display:inline-block;}
+.lsp{background:#FFF3EF;color:var(--accent);border:1px solid var(--accent);}
+.lwb{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue);}
+.cmp-clear-btn{display:flex;align-items:center;gap:6px;padding:6px 13px;border-radius:20px;background:var(--red-bg);color:var(--red);border:1px solid var(--red);font-size:12px;font-weight:600;cursor:pointer;margin-left:auto;}
+/* NOTES PAGE */
+.notes-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.notes-title{font-size:16px;font-weight:800;}
+.notes-clear{font-size:11px;padding:4px 11px;border-radius:20px;background:var(--red-bg);color:var(--red);border:1px solid var(--red);cursor:pointer;}
+.note-editor{width:100%;min-height:160px;padding:11px 13px;border:1.5px solid var(--border);border-radius:12px;font-size:13px;font-family:inherit;line-height:1.65;resize:vertical;background:#fff;color:var(--text);}
+.note-editor:focus{outline:none;border-color:var(--purple);}
+.note-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:11px 13px;margin-bottom:8px;}
+.note-card-title{font-size:12px;font-weight:700;color:var(--purple);margin-bottom:5px;}
+.note-card-content{font-size:13px;line-height:1.6;color:var(--text);}
+.note-card-del{float:right;font-size:13px;color:var(--red);cursor:pointer;background:none;border:none;padding:0;}
+.note-add-btn{width:100%;padding:9px;background:var(--purple-bg);color:var(--purple);border:1.5px solid var(--purple);border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;margin-top:6px;}
+/* AI */
+.ai-panel{background:#fff;border:1.5px solid var(--gemini);border-radius:var(--radius);overflow:hidden;margin-bottom:10px;}
+.ai-ph{background:var(--gemini);color:#fff;padding:9px 13px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;}
+.ai-msgs{padding:10px;display:flex;flex-direction:column;gap:9px;max-height:350px;overflow-y:auto;}
+.ai-msg{max-width:88%;line-height:1.6;font-size:13px;}
+.ai-msg.user{align-self:flex-end;background:var(--gemini);color:#fff;padding:8px 12px;border-radius:16px 16px 4px 16px;}
+.ai-msg.bot{align-self:flex-start;background:var(--gemini-bg);color:var(--text);padding:8px 12px;border-radius:4px 16px 16px 16px;border:.5px solid #C5D8FD;}
+.ai-msg.bot b{color:var(--gemini);}
+.ai-msg.ld{color:var(--text2);font-style:italic;}
+.ai-ir{display:flex;gap:7px;padding:9px 11px;border-top:1px solid var(--border);background:#FAFCFF;}
+.ai-ti{flex:1;padding:8px 11px;border:1.5px solid var(--border);border-radius:20px;font-size:13px;outline:none;}
+.ai-ti:focus{border-color:var(--gemini);}
+.ai-sb{background:var(--gemini);color:#fff;border:none;border-radius:20px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;}
+.ai-sb:disabled{opacity:.5;cursor:default;}
+.ai-qb{display:flex;flex-wrap:wrap;gap:4px;padding:7px 11px 0;}
+.ai-q{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--gemini-bg);color:var(--gemini);border:.5px solid #C5D8FD;cursor:pointer;white-space:nowrap;}
+/* RANKING / WARNING */
+.rkcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 13px;margin-bottom:7px;display:flex;gap:11px;align-items:flex-start;cursor:pointer;}
+.rkn{font-size:20px;font-weight:900;color:var(--border);width:28px;flex-shrink:0;line-height:1;}
+.rkn.g{color:#D4A017;}.rkn.s{color:#9E9E9E;}.rkn.b{color:#B5651D;}
+.rki{flex:1;}
+.rkbr{font-size:14px;font-weight:700;}
+.rkr{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.45;}
+.rks{font-size:11px;font-weight:700;color:var(--green);background:var(--green-bg);padding:2px 8px;border-radius:7px;white-space:nowrap;}
+.sh{font-size:15px;font-weight:800;margin:14px 0 7px;}
+.sh:first-child{margin-top:0;}
+.wcard{background:var(--red-bg);border:1px solid #F5C6C2;border-radius:var(--radius);padding:11px 13px;margin-bottom:7px;}
+.wt{font-size:13px;font-weight:700;color:var(--red);}
+.wb-{font-size:12px;margin-top:4px;line-height:1.5;}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="topbar-title">🐱 上聯寵物展 AI 逛展神器</div>
-  <div class="topbar-sub">英短寶寶專屬版 · Gemini AI 加持</div>
+  <div class="topbar-title">🐱 上聯寵物展 AI 逛展神器 v5</div>
+  <div class="topbar-sub">英短寶寶專屬 · Gemini AI 加持</div>
 </div>
 
 <div class="nav-tabs">
   <div class="nav-tab active" onclick="showPage('brands')">🏪 品牌</div>
-  <div class="nav-tab" onclick="showPage('ai')">🤖 AI助理</div>
+  <div class="nav-tab" onclick="showPage('ai')">🤖 AI</div>
   <div class="nav-tab" onclick="showPage('cart')">🛒 購物車</div>
   <div class="nav-tab" onclick="showPage('compare')">⚖️ 比價</div>
   <div class="nav-tab" onclick="showPage('ranking')">⭐ 排行</div>
+  <div class="nav-tab" onclick="showPage('notes')">📝 筆記</div>
   <div class="nav-tab" onclick="showPage('warning')">⚠️ 幼貓</div>
 </div>
 
-<!-- BRANDS PAGE -->
+<!-- BRANDS -->
 <div class="page active" id="page-brands">
-  <div style="padding-top:10px;">
-    <!-- API Key Setup -->
+  <div style="padding-top:8px;">
     <div class="setup-banner" id="setupBanner">
-      <div class="setup-title">🤖 設定 Gemini API Key 解鎖 AI 功能</div>
-      <div style="font-size:12px;color:var(--gemini);">去 <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--gemini);font-weight:700;">aistudio.google.com/apikey</a> 免費申請，填入後即可使用 AI 搜尋與分析</div>
+      <div class="setup-title">🤖 設定 Gemini API Key 啟用 AI 功能</div>
+      <div style="font-size:11px;color:var(--gemini);">前往 <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--gemini);font-weight:700;">aistudio.google.com/apikey</a> 免費申請</div>
       <div class="setup-row">
         <input class="api-input" id="apiKeyInput" type="password" placeholder="AIza...">
         <button class="api-save-btn" onclick="saveApiKey()">儲存</button>
       </div>
       <div class="api-status" id="apiStatus"></div>
     </div>
-
     <div class="search-wrap">
-      <span class="search-icon">🔍</span>
+      <span class="si">🔍</span>
       <input class="search-input" id="searchInput" placeholder="品牌、攤位號、益生菌、貓抓板、凍乾..." oninput="onSearch()" onfocus="showSuggest()" onblur="hideSuggestDelay()">
-      <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+      <button class="sc" id="searchClear" onclick="clearSearch()">✕</button>
     </div>
-    <div class="suggest-box" id="suggestBox"></div>
-
+    <div class="sug-box" id="suggestBox"></div>
     <div class="filter-area">
-      <div class="filter-row">
-        <span class="filter-label">品類</span>
-        <div class="chips-row" id="catChips">
+      <div class="fr">
+        <span class="fl">品類</span>
+        <div class="chips" id="catChips">
           <span class="chip active" data-cat="all" onclick="toggleCat('all',this)">全部</span>
           <span class="chip" data-cat="飼料" onclick="toggleCat('飼料',this)">飼料</span>
           <span class="chip" data-cat="零食" onclick="toggleCat('零食',this)">零食</span>
@@ -249,9 +243,9 @@ body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);co
           <span class="chip" data-cat="居家玩具" onclick="toggleCat('居家玩具',this)">居家玩具</span>
         </div>
       </div>
-      <div class="filter-row">
-        <span class="filter-label">排序</span>
-        <div class="chips-row">
+      <div class="fr">
+        <span class="fl">排序</span>
+        <div class="chips">
           <span class="chip" data-sort="cp_desc" onclick="setSort('cp_desc',this)">⭐ CP↓</span>
           <span class="chip" data-sort="cp_asc" onclick="setSort('cp_asc',this)">CP↑</span>
           <span class="chip" data-sort="price_desc" onclick="setSort('price_desc',this)">💰 價格↓</span>
@@ -259,52 +253,48 @@ body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);co
           <span class="chip" data-sort="must" onclick="setSort('must',this)">🔥 必買</span>
         </div>
       </div>
-      <div class="filter-row">
-        <span class="filter-label">篩選</span>
-        <div class="chips-row">
+      <div class="fr">
+        <span class="fl">篩選</span>
+        <div class="chips">
           <span class="chip" data-filter="kitten" onclick="toggleFilter('kitten',this)">🐱 幼貓OK</span>
           <span class="chip" data-filter="mustbuy" onclick="toggleFilter('mustbuy',this)">🔥 必買</span>
         </div>
       </div>
     </div>
-    <div class="active-filters" id="activeFilters"></div>
-    <div class="result-count" id="resultCount"></div>
-    <div class="brand-grid" id="brandGrid"></div>
+    <div class="af-row" id="activeFilters"></div>
+    <div class="rc" id="resultCount"></div>
+    <div class="bgrid" id="brandGrid"></div>
   </div>
 </div>
 
 <!-- AI PAGE -->
 <div class="page" id="page-ai">
-  <div style="padding-top:10px;">
-    <div id="aiNoKey" style="display:none;text-align:center;padding:30px 20px;">
-      <div style="font-size:40px;margin-bottom:12px;">🔑</div>
-      <div style="font-size:15px;font-weight:600;margin-bottom:8px;">需要設定 Gemini API Key</div>
-      <div style="font-size:13px;color:var(--text2);margin-bottom:16px;">回到品牌頁面頂部設定 Key，完全免費</div>
-      <button onclick="showPage('brands')" style="padding:10px 24px;background:var(--gemini);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">去設定</button>
+  <div style="padding-top:8px;">
+    <div id="aiNoKey" style="display:none;text-align:center;padding:30px 18px;">
+      <div style="font-size:36px;margin-bottom:10px;">🔑</div>
+      <div style="font-size:14px;font-weight:600;margin-bottom:7px;">需要設定 Gemini API Key</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:14px;">回到品牌頁頂部設定，完全免費</div>
+      <button onclick="showPage('brands')" style="padding:9px 22px;background:var(--gemini);color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;">去設定</button>
     </div>
     <div id="aiMain">
       <div class="ai-panel">
-        <div class="ai-panel-header">
-          <span style="font-size:20px;">✨</span>
-          <div>
-            <div>Gemini AI 逛展顧問</div>
-            <div style="font-size:10px;opacity:.8;font-weight:400;">可問蝦皮行情、品牌比較、英短建議、預算規劃</div>
-          </div>
+        <div class="ai-ph"><span style="font-size:18px;">✨</span>
+          <div><div>Gemini AI 逛展顧問</div><div style="font-size:10px;opacity:.8;font-weight:400;">可問蝦皮行情、品牌比較、英短建議、預算規劃</div></div>
         </div>
-        <div class="ai-quick-btns">
-          <span class="ai-quick" onclick="quickAsk('我的英短4個月，今天逛展最應該優先買什麼？')">🐱 英短幼貓應優先買什麼？</span>
-          <span class="ai-quick" onclick="quickAsk('ZIWI巔峰和ACANA愛肯拿哪個更適合英短幼貓？請詳細比較')">ZIWI vs ACANA 哪個好？</span>
-          <span class="ai-quick" onclick="quickAsk('好味小姐的主食罐和凍乾零食，蝦皮上大概賣多少錢？')">🛍 好味小姐蝦皮行情？</span>
-          <span class="ai-quick" onclick="quickAsk('我今天預算2000元，請幫我規劃最划算的購買清單，我有一隻4個月英短幼貓')">💰 預算2000元怎麼分配？</span>
-          <span class="ai-quick" onclick="quickAsk('哪些保健品適合英短貓咪？幾個月開始吃比較好？')">💊 英短保健品怎麼選？</span>
-          <span class="ai-quick" onclick="quickAsk('幫我分析購物車裡的商品，給我購買建議')">🛒 分析我的購物車</span>
+        <div class="ai-qb">
+          <span class="ai-q" onclick="quickAsk('我的英短4個月，今天逛展最應該優先買什麼？')">🐱 英短幼貓應優先買什麼？</span>
+          <span class="ai-q" onclick="quickAsk('ZIWI巔峰和ACANA愛肯拿哪個更適合英短幼貓？')">ZIWI vs ACANA？</span>
+          <span class="ai-q" onclick="quickAsk('好味小姐的主食罐蝦皮上大概賣多少錢？')">🛍 好味小姐蝦皮行情？</span>
+          <span class="ai-q" onclick="quickAsk('我今天預算2000元，有一隻4個月英短幼貓，請幫我規劃購買清單')">💰 預算2000元怎麼用？</span>
+          <span class="ai-q" onclick="quickAsk('哪些保健品適合英短？幾個月開始吃？')">💊 英短保健品怎麼選？</span>
+          <span class="ai-q" onclick="aiAnalyzeCart()">🛒 分析我的購物車</span>
         </div>
-        <div class="ai-messages" id="aiMessages">
-          <div class="ai-msg bot">👋 你好！我是你的 AI 逛展顧問，由 Gemini 驅動。<br><br>我了解你有一隻 <b>4個月英短幼貓</b>，我會幫你：<br>・分析哪些品牌和商品最適合<br>・查詢蝦皮/網路上的大概行情<br>・比較不同品牌的優缺點<br>・根據你的預算給出建議<br><br>上面有常用問題可以直接點，或自己輸入！</div>
+        <div class="ai-msgs" id="aiMessages">
+          <div class="ai-msg bot">👋 你好！我是 Gemini AI 逛展顧問。<br><br>你有一隻 <b>4個月英短幼貓</b>，我會幫你：<br>・分析哪些品牌最適合<br>・查詢蝦皮/網路大概行情<br>・根據預算給出建議<br><br>點上方快速問題，或自己輸入！</div>
         </div>
-        <div class="ai-input-row">
-          <input class="ai-text-input" id="aiInput" placeholder="問我任何問題..." onkeydown="if(event.key==='Enter')sendAI()">
-          <button class="ai-send-btn" id="aiSendBtn" onclick="sendAI()">發送</button>
+        <div class="ai-ir">
+          <input class="ai-ti" id="aiInput" placeholder="問我任何問題..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendAI();}">
+          <button class="ai-sb" id="aiSendBtn" onclick="sendAI()">送出</button>
         </div>
       </div>
     </div>
@@ -313,66 +303,95 @@ body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);co
 
 <!-- CART PAGE -->
 <div class="page" id="page-cart">
-  <div style="padding-top:10px;">
-    <div class="cart-summary">
-      <div style="font-size:13px;opacity:.85;">購物車總金額</div>
-      <div class="cart-total-num" id="cartTotal">$0</div>
-      <div style="font-size:12px;opacity:.85;" id="cartCount">尚未加入任何商品</div>
+  <div style="padding-top:8px;">
+    <div class="cs">
+      <div style="font-size:12px;opacity:.85;">購物車總金額</div>
+      <div class="ctn" id="cartTotal">$0</div>
+      <div style="font-size:11px;opacity:.85;" id="cartCount">尚未加入任何商品</div>
     </div>
-    <button class="ai-cart-btn" onclick="aiAnalyzeCart()">✨ 讓 Gemini AI 分析購物車，給我建議</button>
-    <div id="cartList"><div class="cart-empty">🛒 空的，從品牌頁加入商品</div></div>
+    <button class="ai-wide-btn" onclick="aiAnalyzeCart()">✨ Gemini AI 分析購物車，給我建議</button>
+    <div id="cartList" style="margin-top:8px;"><div class="ce">🛒 空的，從品牌頁加入商品</div></div>
   </div>
 </div>
 
 <!-- COMPARE PAGE -->
 <div class="page" id="page-compare">
-  <div style="padding-top:10px;">
-    <div class="compare-topbar">
-      <div class="compare-topbar-title">⚖️ 品牌比價台</div>
-      <div style="font-size:12px;color:var(--purple);opacity:.8;margin-top:2px;">最多同時比較 4 個 · 按品類切換</div>
-      <div class="compare-cat-row" id="compareCatRow"></div>
+  <div style="padding-top:8px;">
+    <div class="cmp-top">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div class="cmp-top-title">⚖️ 品牌比價台</div>
+        <button class="cmp-clear-btn" onclick="clearAllCompare()">🗑 清除全部</button>
+      </div>
+      <div style="font-size:11px;color:var(--purple);opacity:.8;margin-top:2px;">選 2 個以上品牌即可比較 · 最多 4 個 · 按品類切換</div>
+      <div class="ccat-row" id="compareCatRow"></div>
     </div>
-    <div class="compare-hint" id="compareHint">從品牌頁點「⚖️ 比價」加入品牌</div>
-    <div class="compare-slot" id="compareSlot"></div>
+    <div class="chint" id="compareHint">從品牌頁點「⚖️ 比價」加入品牌</div>
+    <div class="cmp-slot" id="compareSlot"></div>
     <div id="compareTable"></div>
-    <button class="ai-compare-btn" id="aiCompareBtn" onclick="aiAnalyzeCompare()" style="display:none;">✨ 讓 Gemini AI 分析這幾個品牌，給我購買建議</button>
-    <div style="font-size:11px;color:var(--text2);margin-top:6px;">💡 網路參考價為展前研究資料；展場現場價請現場輸入，自動計算省幾%</div>
+    <button class="ai-wide-btn" id="aiCompareBtn" onclick="aiAnalyzeCompare()" style="display:none;margin-top:8px;">✨ Gemini AI 分析這幾個品牌，給我購買建議</button>
+    <div style="font-size:10px;color:var(--text2);margin-top:5px;">💡 網路參考價為展前研究資料；網路實際價請自行上蝦皮/官網查詢後填入；展場現場價在展場填入，自動計算省幾%</div>
   </div>
 </div>
 
 <!-- RANKING PAGE -->
 <div class="page" id="page-ranking">
-  <div style="padding-top:10px;">
-    <div class="sec-header">🏆 綜合 CP 值排行</div>
+  <div style="padding-top:8px;">
+    <div class="sh">🏆 綜合 CP 值排行</div>
     <div id="rankingList"></div>
-    <div class="sec-header" style="margin-top:20px;color:var(--purple);">🐱 幼貓推薦 Top</div>
+    <div class="sh" style="color:var(--purple);">🐱 幼貓推薦 Top</div>
     <div id="kittenList"></div>
+  </div>
+</div>
+
+<!-- NOTES PAGE -->
+<div class="page" id="page-notes">
+  <div style="padding-top:8px;">
+    <div class="notes-header">
+      <div class="notes-title">📝 逛展筆記</div>
+      <button class="notes-clear" onclick="clearAllNotes()">清除全部</button>
+    </div>
+    <!-- 自由編輯區 -->
+    <div style="font-size:12px;color:var(--text2);margin-bottom:6px;">✏️ 自由筆記（隨時編輯）</div>
+    <textarea class="note-editor" id="freeNote" placeholder="在這裡直接打字記錄逛展心得、待確認事項、展場備忘...&#10;&#10;例如：&#10;- 好味小姐主食罐今天賣$75，比網路便宜！&#10;- ZIWI展場有試吃，貓咪很愛&#10;- 記得問怪獸部落的買3送1活動" oninput="saveFreeNote()"></textarea>
+    <!-- 從比價台匯入的筆記 -->
+    <div style="font-size:12px;color:var(--text2);margin:12px 0 6px;">📊 從比價台同步的筆記</div>
+    <div id="compareNotesList">
+      <div style="font-size:12px;color:var(--text2);text-align:center;padding:14px;">比價台填入備註或展場 vs 網路比較結果後會自動出現在這裡</div>
+    </div>
+    <!-- 手動新增筆記 -->
+    <div style="font-size:12px;color:var(--text2);margin:12px 0 6px;">➕ 手動新增筆記</div>
+    <div style="display:flex;gap:7px;margin-bottom:7px;">
+      <input id="noteTitle" placeholder="標題（例如：ZIWI）" style="flex:1;padding:7px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;outline:none;">
+      <button onclick="addManualNote()" style="padding:7px 13px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">新增</button>
+    </div>
+    <textarea id="noteContent" placeholder="內容..." style="width:100%;height:80px;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;resize:vertical;outline:none;" onkeydown="if(event.key==='Enter'&&event.ctrlKey)addManualNote()"></textarea>
+    <div id="manualNotesList" style="margin-top:8px;"></div>
   </div>
 </div>
 
 <!-- WARNING PAGE -->
 <div class="page" id="page-warning">
-  <div style="padding-top:10px;">
-    <div class="warn-card" style="background:#FEF5E7;border-color:#FAD7A0;">
-      <div class="warn-title" style="color:var(--amber);">🐱 英短 4 個月幼貓注意事項</div>
-      <div class="warn-body">英國短毛貓天生容易有<b>心臟（HCM）</b>和<b>關節</b>問題。4個月幼貓腸胃還在發育，以下幾點務必注意：</div>
+  <div style="padding-top:8px;">
+    <div class="wcard" style="background:#FEF5E7;border-color:#FAD7A0;">
+      <div class="wt" style="color:var(--amber);">🐱 英短 4 個月幼貓注意事項</div>
+      <div class="wb-">英國短毛貓天生容易有<b>心臟（HCM）</b>和<b>關節</b>問題。4個月幼貓腸胃還在發育：</div>
     </div>
-    <div class="sec-header">❌ 不建議購買</div>
-    <div class="warn-card"><div class="warn-title">補充品 / 保健品</div><div class="warn-body">大多數保健品建議 6 個月以上。益生菌、魚油可少量嘗試，其他先諮詢獸醫。</div></div>
-    <div class="warn-card"><div class="warn-title">高鈉零食、丙二醇、BHA/BHT</div><div class="warn-body">對幼貓腎臟傷害大，購買前務必看成分表。</div></div>
-    <div class="warn-card"><div class="warn-title">生食/鮮食需謹慎</div><div class="warn-body">4個月免疫力未全，選有 HACCP 認證或高壓滅菌的品牌。</div></div>
-    <div class="warn-card"><div class="warn-title">成貓配方飼料</div><div class="warn-body">請選幼貓（Kitten）或全齡（All Life Stage）配方。</div></div>
-    <div class="sec-header" style="color:var(--green);">✓ 英短幼貓優先推薦</div>
-    <div class="info-box">
-      <div style="margin-bottom:8px;"><b>💊 關節保健（6個月後）</b>：Omega-3、葡萄糖胺對英短很重要</div>
-      <div style="margin-bottom:8px;"><b>🍗 高蛋白幼貓飼料</b>：蛋白質35%+，低碳水</div>
-      <div style="margin-bottom:8px;"><b>🏠 貓抓板</b>：4個月正在學抓撓習慣，現在買最划算</div>
+    <div class="sh">❌ 不建議購買</div>
+    <div class="wcard"><div class="wt">補充品 / 保健品</div><div class="wb-">大多數保健品建議 6 個月以上。益生菌、魚油可少量嘗試，其他先諮詢獸醫。</div></div>
+    <div class="wcard"><div class="wt">高鈉零食、丙二醇、BHA/BHT</div><div class="wb-">對幼貓腎臟傷害大，購買前務必看成分表。</div></div>
+    <div class="wcard"><div class="wt">生食/鮮食需謹慎</div><div class="wb-">4個月免疫力未全，選有 HACCP 認證或高壓滅菌的品牌。</div></div>
+    <div class="wcard"><div class="wt">成貓配方飼料</div><div class="wb-">請選幼貓（Kitten）或全齡（All Life Stage）配方。</div></div>
+    <div class="sh" style="color:var(--green);">✓ 英短幼貓優先推薦</div>
+    <div class="ibox">
+      <div style="margin-bottom:7px;"><b>💊 關節保健（6個月後）</b>：Omega-3、葡萄糖胺對英短很重要</div>
+      <div style="margin-bottom:7px;"><b>🍗 高蛋白幼貓飼料</b>：蛋白質35%+，低碳水</div>
+      <div style="margin-bottom:7px;"><b>🏠 貓抓板</b>：4個月正在學抓撓習慣，現在買最划算</div>
       <div><b>🧪 益生菌</b>：幼貓腸胃敏感，汪喵星球、好味小姐有幼貓款</div>
     </div>
-    <div class="sec-header" style="margin-top:16px;">🛡️ 業務話術防彈</div>
-    <div class="warn-card" style="background:var(--purple-bg);border-color:#D5C6F0;">
-      <div class="warn-title" style="color:var(--purple);">聽到這些請慢下來</div>
-      <div class="warn-body">
+    <div class="sh" style="margin-top:14px;">🛡️ 業務話術防彈</div>
+    <div class="wcard" style="background:var(--purple-bg);border-color:#D5C6F0;">
+      <div class="wt" style="color:var(--purple);">聽到這些請慢下來</div>
+      <div class="wb-">
         ・「這個對幼貓特別好」→ <b>問：幾個月以上適用？</b><br>
         ・「展場限定，只有今天」→ <b>網路通常都買得到</b><br>
         ・「買越多越划算」→ <b>幼貓需求量小，囤太多會過期</b><br>
@@ -383,24 +402,22 @@ body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);co
 </div>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
-  <div class="modal-sheet">
-    <div class="modal-handle"></div>
-    <div class="modal-header">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="modal-brand-name" id="mBrandName"></div>
-      <div class="modal-booth" id="mBooth"></div>
-      <div class="modal-cats" id="mCats"></div>
+<div class="mov" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="msh">
+    <div class="mhd"></div>
+    <div class="mhdr">
+      <button class="mcl" onclick="closeModal()">✕</button>
+      <div class="mbn" id="mBrandName"></div>
+      <div class="mbo" id="mBooth"></div>
+      <div class="mcats" id="mCats"></div>
     </div>
-    <div class="modal-body" id="modalBody"></div>
+    <div class="mbody" id="modalBody"></div>
   </div>
 </div>
 
 <script>
-// ============================
-// BRAND DATA
-// ============================
-const BRANDS = [
+// ==================== DATA ====================
+const BRANDS=[
 {name:"ZIWI巔峰",booth:"P414,Q522",cats:["飼料","罐頭"],cp:5,price:5,mustBuy:true,kittenOk:true,kittenNote:"有幼貓全齡配方",keywords:["風乾糧","高蛋白","無穀","肉含量高"],shopee:"https://shopee.tw/ziwi",web:"https://www.ziwipets.com.tw",refPrice:{"飼料":[1200,2800],"罐頭":[120,185]},intro:"紐西蘭頂級風乾糧品牌，肉含量93%+，無穀物，市場公認品質最高的乾糧之一。",products:["風乾主食糧","罐頭系列","風乾零食"],deal:"展場通常85折，買大包更優惠",pros:["肉含量極高93%+","無穀物無人工添加","全齡配方適合幼貓"],cons:["價格偏高","熱量高需控制"],review:"網路評價極佳，被稱為貓糧界的愛馬仕。",cpNote:"肉含量高，實際用量少"},
 {name:"ACANA愛肯拿",booth:"Q422",cats:["飼料"],cp:5,price:4,mustBuy:true,kittenOk:true,kittenNote:"有幼貓/全齡配方，英短推薦",keywords:["無穀","高蛋白","加拿大","幼貓配方","低碳水"],shopee:"https://shopee.tw/acana",web:"https://www.acana.com",refPrice:{"飼料":[800,1800]},intro:"加拿大頂級飼料，與ORIJEN同廠，肉含量高，無穀物。",products:["無穀高肉含量乾糧","幼貓配方"],deal:"展場折扣，大包優惠",pros:["加拿大品質","肉含量高","幼貓配方","英短適合"],cons:["價格偏高","適應期較長"],review:"台灣頂級飼料首選之一，貓版好評如潮。",cpNote:"頂級飼料必買之一"},
 {name:"Orijen歐睿健",booth:"Q522",cats:["飼料"],cp:5,price:5,mustBuy:true,kittenOk:true,kittenNote:"有幼貓/全齡配方",keywords:["無穀","高蛋白","加拿大","肉含量85"],shopee:"https://shopee.tw/orijen",web:"https://www.orijen.ca",refPrice:{"飼料":[1100,2500]},intro:"加拿大頂級飼料，肉含量85%+，與ACANA同廠但更高端。",products:["高肉含量主食糧","幼貓配方"],deal:"展場折扣",pros:["肉含量85%+","品質全球頂尖","幼貓配方優"],cons:["價格最高","熱量高"],review:"Orijen是最頂的選擇，評價幾乎滿分。",cpNote:"飼料界天花板"},
@@ -422,290 +439,208 @@ const BRANDS = [
 {name:"Bluebulous",booth:"Q601,Q602",cats:["配件","服飾","居家玩具"],cp:4,price:4,mustBuy:false,kittenOk:true,kittenNote:"注意尺寸，英短體型確認",keywords:["胸背帶","項圈","服飾","時尚","設計"],shopee:"https://shopee.tw/bluebulous",web:"https://www.bluebulous.com",refPrice:{"配件":[1200,3000],"服飾":[600,1800]},intro:"台灣品牌，配件、服飾、居家用品一體，設計時尚。",products:["胸背帶","項圈","服飾","居家用品"],deal:"展場折扣",pros:["設計時尚","多元產品"],cons:["價格偏高","英短體型需確認尺寸"],review:"台灣時尚寵物品牌，設計感業界前段班。",cpNote:"設計控必逛"},
 {name:"ZEZE",booth:"Q802",cats:["居家玩具"],cp:4,price:4,mustBuy:false,kittenOk:true,kittenNote:"幼貓適合，設計感好",keywords:["貓樹","貓跳台","設計","居家","玩具","貓爬架"],shopee:"https://shopee.tw/zeze",web:"https://www.zeze.com.tw",refPrice:{"居家玩具":[600,3500]},intro:"台灣設計師品牌，貓咪居家用品和玩具，現代簡約，IG曝光度高。",products:["設計師貓用品","玩具","貓樹"],deal:"展場折扣",pros:["設計師品牌","現代簡約"],cons:["價格偏高"],review:"台灣設計師貓用品首選，Instagram非常多推薦。",cpNote:"設計控必逛"},
 ];
+const PL={1:'💲親民',2:'💲💲平價',3:'💲💲💲中高',4:'💲💲💲💲高端',5:'💲💲💲💲💲頂級'};
 
-const PRICE_LABEL={1:'💲親民',2:'💲💲平價',3:'💲💲💲中高',4:'💲💲💲💲高端',5:'💲💲💲💲💲頂級'};
-
-// ============================
-// STATE
-// ============================
-let cart = JSON.parse(localStorage.getItem('expoCart4')||'[]');
-let compareList = JSON.parse(localStorage.getItem('expoCompare4')||'[]');
-let comparePrices = JSON.parse(localStorage.getItem('expoComparePrices4')||'{}');
+// ==================== STATE ====================
+let cart = JSON.parse(localStorage.getItem('expov5Cart')||'[]');
+let compareList = JSON.parse(localStorage.getItem('expov5Cmp')||'[]');
+// cpData[name] = { expo:'', net:'', note:'' }
+let cpData = JSON.parse(localStorage.getItem('expov5CpData')||'{}');
+let manualNotes = JSON.parse(localStorage.getItem('expov5Notes')||'[]');
 let activeCats = new Set(['all']);
 let activeSort = '';
 let activeFilters = new Set();
 let searchQuery = '';
-let compareCatFilter = 'all';
-let aiHistory = []; // conversation history
-let apiKey = localStorage.getItem('geminiApiKey') || '';
+let cmpCatFilter = 'all';
+let apiKey = localStorage.getItem('geminiKey')||'';
+let aiHistory = [];
 
-function saveCart(){ localStorage.setItem('expoCart4', JSON.stringify(cart)); }
-function saveCompare(){ localStorage.setItem('expoCompare4', JSON.stringify(compareList)); }
-function savePrices(){ localStorage.setItem('expoComparePrices4', JSON.stringify(comparePrices)); }
+function sv(k,v){ localStorage.setItem(k,JSON.stringify(v)); }
+function saveCart(){ sv('expov5Cart',cart); }
+function saveCmp(){ sv('expov5Cmp',compareList); }
+function saveCpData(){ sv('expov5CpData',cpData); }
+function saveNotes(){ sv('expov5Notes',manualNotes); }
 
-// ============================
-// API KEY
-// ============================
+// ==================== API KEY ====================
 function saveApiKey(){
-  const k = document.getElementById('apiKeyInput').value.trim();
-  if(!k){ document.getElementById('apiStatus').innerHTML='<span class="api-no">請輸入 API Key</span>'; return; }
-  localStorage.setItem('geminiApiKey', k);
-  apiKey = k;
-  document.getElementById('apiStatus').innerHTML='<span class="api-ok">✓ 已儲存！AI 功能已啟用</span>';
-  document.getElementById('setupBanner').style.background='var(--green-bg)';
-  document.getElementById('setupBanner').style.borderColor='var(--green)';
+  const k=document.getElementById('apiKeyInput').value.trim();
+  if(!k){document.getElementById('apiStatus').innerHTML='<span style="color:var(--red)">請輸入 API Key</span>';return;}
+  localStorage.setItem('geminiKey',k);
+  apiKey=k;
+  document.getElementById('apiStatus').innerHTML='<span style="color:var(--green)">✓ 已儲存，AI 功能已啟用</span>';
+  document.getElementById('setupBanner').style.cssText='background:var(--green-bg);border:1.5px solid var(--green);border-radius:var(--radius);padding:12px;margin-bottom:10px;';
 }
 function initApiKeyUI(){
   if(apiKey){
-    document.getElementById('apiKeyInput').value = apiKey;
-    document.getElementById('apiStatus').innerHTML='<span class="api-ok">✓ API Key 已設定，AI 功能已啟用</span>';
-    document.getElementById('setupBanner').style.background='var(--green-bg)';
-    document.getElementById('setupBanner').style.borderColor='var(--green)';
-    document.getElementById('aiNoKey').style.display='none';
-    document.getElementById('aiMain').style.display='block';
-  } else {
-    document.getElementById('aiNoKey').style.display='block';
-    document.getElementById('aiMain').style.display='none';
+    document.getElementById('apiKeyInput').value=apiKey;
+    document.getElementById('apiStatus').innerHTML='<span style="color:var(--green)">✓ API Key 已設定</span>';
+    document.getElementById('setupBanner').style.cssText='background:var(--green-bg);border:1.5px solid var(--green);border-radius:var(--radius);padding:12px;margin-bottom:10px;';
   }
+  const aiMain=document.getElementById('aiMain');
+  const aiNoKey=document.getElementById('aiNoKey');
+  if(aiMain&&aiNoKey){ if(apiKey){aiMain.style.display='block';aiNoKey.style.display='none';}else{aiMain.style.display='none';aiNoKey.style.display='block';} }
 }
 
-// ============================
-// GEMINI API
-// ============================
-// System prompt: 帶入品牌資料庫 + 英短幼貓情境
+// ==================== GEMINI API ====================
+// 直接呼叫 Gemini REST API，不使用 systemInstruction 或 tools 以避免 CORS preflight 被擋
 function buildSystemPrompt(){
-  const brandSummary = BRANDS.map(b =>
-    `【${b.name}】攤位:${b.booth||'確認'} 品類:${b.cats.join('/')} CP值:${'★'.repeat(b.cp)} 價格:${PRICE_LABEL[b.price]} 必買:${b.mustBuy?'是':'否'} 幼貓OK:${b.kittenOk?'是':'需確認'} 主打:${b.products.join('/')} 優點:${b.pros.join('/')} 缺點:${b.cons.join('/')} 網路參考價:${b.refPrice?Object.entries(b.refPrice).map(([c,[mn,mx]])=>`${c}$${mn}-$${mx}`).join('/'):'無'} 攤位:${b.booth}`
-  ).join('\n');
-  return `你是一個專業的寵物展逛展顧問，用戶正在參加「上聯寵物展」。
-用戶有一隻4個月大的英國短毛貓（英短）幼貓，需要特別注意：
-1. 4個月英短幼貓腸胃尚未發育完全
-2. 英短天生容易有心臟（HCM）和關節問題
-3. 大多數保健品建議6個月後再使用
-4. 避免含丙二醇、BHA/BHT等成分的食品
-5. 請選幼貓（Kitten）或全齡（All Life Stage）配方飼料
-
-以下是展場所有品牌的詳細資料：
-${brandSummary}
-
-你的任務：
-- 根據用戶問題給出專業、實用的建議
-- 如果問到蝦皮或網路價格，請根據品牌資料中的網路參考價區間回答，並說明這是參考區間非即時價格
-- 如果問到品牌比較，請客觀分析各品牌的優缺點
-- 如果問到預算規劃，請根據品牌的價格定位和CP值給出合理建議
-- 用繁體中文回答，語氣親切自然，像朋友一樣
-- 回答要簡潔，重點突出，適合在展場快速閱讀
-- 可以用emoji讓回答更易讀`;
+  const bs=BRANDS.map(b=>`[${b.name}] 攤位:${b.booth||'確認'} 品類:${b.cats.join('/')} CP:${'★'.repeat(b.cp)} 價格:${PL[b.price]} 必買:${b.mustBuy?'是':'否'} 幼貓:${b.kittenOk?'OK':'確認'} 商品:${b.products.join('/')} 優:${b.pros.join('/')} 缺:${b.cons.join('/')} 參考價:${b.refPrice?Object.entries(b.refPrice).map(([c,[a,z]])=>`${c}$${a}-$${z}`).join('/'):'無'}`).join('\n');
+  return `你是一個專業的寵物展逛展顧問，用戶正在參加「上聯寵物展」，有一隻4個月大的英國短毛貓（英短）幼貓。
+注意事項：1.4個月英短腸胃未完全發育 2.英短易有心臟HCM和關節問題 3.保健品建議6個月後 4.避免丙二醇BHA/BHT 5.選幼貓或全齡配方
+展場品牌資料：\n${bs}\n
+請用繁體中文、親切自然的語氣回答。如問蝦皮/網路價格，根據參考價區間回答並說明是參考值非即時。回答要簡潔重點突出，適合展場快速閱讀。`;
 }
 
-async function callGemini(userMessage){
+async function callGemini(msg){
   if(!apiKey) return '請先設定 Gemini API Key！';
+  // 把 system prompt 合併進第一則 user 訊息，避免 systemInstruction 觸發 CORS preflight
+  const sysText=buildSystemPrompt();
+  const msgs=[...aiHistory];
+  // 如果是第一則訊息，把 system prompt 放前面
+  const firstUserText=sysText+'\n\n---\n用戶問題：'+msg;
+  const contents=msgs.length===0
+    ?[{role:'user',parts:[{text:firstUserText}]}]
+    :[...msgs,{role:'user',parts:[{text:msg}]}];
 
-  aiHistory.push({ role:'user', parts:[{ text: userMessage }] });
+  aiHistory.push({role:'user',parts:[{text:msg}]});
 
-  const body = {
-    system_instruction: { parts:[{ text: buildSystemPrompt() }] },
-    contents: aiHistory,
-    generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
-    tools: [{ google_search: {} }]  // Google Search Grounding
+  // 不使用 systemInstruction 也不使用 tools，避免 CORS preflight 被擋
+  const body={
+    contents,
+    generationConfig:{temperature:0.7,maxOutputTokens:1500}
   };
-
-  try {
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) }
-    );
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+  try{
+    const res=await fetch(url,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
     if(!res.ok){
-      const err = await res.json();
-      const msg = err.error?.message || `HTTP ${res.status}`;
-      if(res.status===400 && msg.includes('API_KEY')) return '❌ API Key 無效，請重新設定';
-      if(res.status===429) return '❌ 請求太頻繁，請稍後再試';
-      return `❌ 錯誤：${msg}`;
+      const e=await res.json().catch(()=>({}));
+      const m=e.error?.message||`HTTP ${res.status}`;
+      if(res.status===400) return `❌ API Key 格式錯誤或請求有誤：${m}`;
+      if(res.status===403) return '❌ API Key 無效或未啟用，請至 aistudio.google.com/apikey 確認';
+      if(res.status===429) return '❌ 請求太頻繁，請等 30 秒後再試';
+      return `❌ Gemini 錯誤 ${res.status}：${m}`;
     }
-    const data = await res.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || '（無回應）';
-    aiHistory.push({ role:'model', parts:[{ text: reply }] });
+    const data=await res.json();
+    const reply=data.candidates?.[0]?.content?.parts?.[0]?.text||'（Gemini 沒有回傳內容，請重試）';
+    aiHistory.push({role:'model',parts:[{text:reply}]});
     return reply;
-  } catch(e) {
-    return `❌ 網路錯誤：${e.message}`;
+  }catch(e){
+    if(e.name==='TypeError'){
+      return '❌ 網路錯誤：無法連線到 Gemini API\n\n可能原因：\n1. 手機目前無法連接 Google 服務（台灣一般沒問題）\n2. API Key 包含特殊字元，請重新複製貼上\n3. 確認 Key 格式：AIza 開頭，共 39 字元';
+    }
+    return `❌ 未知錯誤：${e.message}`;
   }
 }
 
-function appendAIMsg(role, text){
-  const div = document.createElement('div');
-  div.className = `ai-msg ${role}`;
-  // convert **bold** and newlines
-  div.innerHTML = text
-    .replace(/\*\*(.*?)\*\*/g,'<b>$1</b>')
-    .replace(/\*(.*?)\*/g,'<i>$1</i>')
-    .replace(/\n/g,'<br>');
-  document.getElementById('aiMessages').appendChild(div);
-  div.scrollIntoView({behavior:'smooth', block:'end'});
-  return div;
+function appendMsg(role,text){
+  const d=document.createElement('div');
+  d.className=`ai-msg ${role}`;
+  d.innerHTML=text.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\*(.*?)\*/g,'<i>$1</i>').replace(/\n/g,'<br>');
+  const msgs=document.getElementById('aiMessages');
+  msgs.appendChild(d);
+  msgs.scrollTop=msgs.scrollHeight;
+  return d;
 }
 
 async function sendAI(){
-  if(!apiKey){ showPage('brands'); return; }
-  const input = document.getElementById('aiInput');
-  const msg = input.value.trim();
-  if(!msg) return;
-  input.value = '';
-  const sendBtn = document.getElementById('aiSendBtn');
-  sendBtn.disabled = true;
-
-  appendAIMsg('user', msg);
-  const loadingEl = appendAIMsg('bot loading', '✨ Gemini 思考中...');
-
-  const reply = await callGemini(msg);
-  loadingEl.className = 'ai-msg bot';
-  loadingEl.innerHTML = reply.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\*(.*?)\*/g,'<i>$1</i>').replace(/\n/g,'<br>');
-
-  sendBtn.disabled = false;
-  input.focus();
+  if(!apiKey){showPage('brands');return;}
+  const inp=document.getElementById('aiInput');
+  const msg=inp.value.trim();
+  if(!msg)return;
+  inp.value='';
+  document.getElementById('aiSendBtn').disabled=true;
+  appendMsg('user',msg);
+  const ld=appendMsg('bot ld','✨ Gemini 思考中...');
+  const reply=await callGemini(msg);
+  ld.className='ai-msg bot';
+  ld.innerHTML=reply.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\*(.*?)\*/g,'<i>$1</i>').replace(/\n/g,'<br>');
+  document.getElementById('aiSendBtn').disabled=false;
+  inp.focus();
 }
 
 function quickAsk(q){
   showPage('ai');
-  document.getElementById('aiInput').value = q;
-  sendAI();
+  setTimeout(()=>{
+    document.getElementById('aiInput').value=q;
+    sendAI();
+  },100);
 }
 
 async function aiAnalyzeCart(){
-  if(!apiKey){ alert('請先設定 Gemini API Key'); showPage('brands'); return; }
-  if(!cart.length){ alert('購物車是空的！'); return; }
-  const cartSummary = cart.map(i=>`${i.brand} - ${i.name} x${i.qty} $${i.price}`).join('\n');
-  const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
-  const q = `請分析我的購物車：\n${cartSummary}\n總金額：$${total}\n\n請告訴我：1) 這些商品是否適合4個月英短幼貓 2) 有沒有重複或不必要的品項 3) 有什麼重要的東西我漏買了？`;
-  showPage('ai');
-  document.getElementById('aiInput').value = q;
-  sendAI();
+  if(!apiKey){alert('請先設定 Gemini API Key');showPage('brands');return;}
+  if(!cart.length){alert('購物車是空的！');return;}
+  const sum=cart.map(i=>`${i.brand} ${i.name} x${i.qty} $${i.price}`).join('\n');
+  const total=cart.reduce((s,i)=>s+i.qty*i.price,0);
+  quickAsk(`請分析我的購物車：\n${sum}\n總金額：$${total}\n\n1)是否適合4個月英短幼貓 2)有無重複或不必要品項 3)有什麼重要的東西我漏買了？`);
 }
 
 async function aiAnalyzeCompare(){
-  if(!apiKey){ alert('請先設定 Gemini API Key'); showPage('brands'); return; }
-  const brands = compareList.map(item=>BRANDS.find(x=>x.name===item.name)).filter(Boolean);
-  if(brands.length<2){ alert('請至少加入2個品牌再分析'); return; }
-  const brandNames = brands.map(b=>b.name).join('、');
-  const q = `請幫我詳細比較這幾個品牌：${brandNames}\n\n考慮到我有一隻4個月英短幼貓，請分析哪個品牌最值得在這次展場購買，理由是什麼？`;
-  showPage('ai');
-  document.getElementById('aiInput').value = q;
-  sendAI();
+  if(!apiKey){alert('請先設定 Gemini API Key');showPage('brands');return;}
+  const brs=compareList.map(x=>BRANDS.find(b=>b.name===x.name)).filter(Boolean);
+  if(brs.length<2){alert('請至少加入2個品牌再分析');return;}
+  quickAsk(`請幫我詳細比較這幾個品牌：${brs.map(b=>b.name).join('、')}\n考慮到我有一隻4個月英短幼貓，哪個品牌最值得在這次展場購買？理由是什麼？`);
 }
 
-// ============================
-// SEARCH
-// ============================
-const PRODUCT_KEYWORDS = [
-  "益生菌","魚油","Omega3","凍乾","無穀","風乾糧","主食罐","幼貓配方","關節保健","貓抓板",
-  "貓爬架","貓樹","貓跳台","自動飲水器","防水墊","貓砂盆","益智玩具","手作項圈","胸背帶",
-  "外出包","推車","洗毛精","除臭噴劑","鮮食","豆腐砂","礦砂","卵磷脂","皮毛保健"
-];
+// ==================== SEARCH ====================
+const KW=['益生菌','魚油','Omega3','凍乾','無穀','風乾糧','主食罐','幼貓配方','關節保健','貓抓板','貓爬架','貓樹','貓跳台','自動飲水器','防水墊','益智玩具','胸背帶','外出包','推車','洗毛精','除臭噴劑','鮮食','豆腐砂','礦砂','卵磷脂'];
 
 function onSearch(){
-  const q = document.getElementById('searchInput').value.trim();
-  searchQuery = q;
-  document.getElementById('searchClear').style.display = q?'block':'none';
+  const q=document.getElementById('searchInput').value.trim();
+  searchQuery=q;
+  document.getElementById('searchClear').style.display=q?'block':'none';
   renderSuggest(q);
   renderBrands();
 }
-
 function renderSuggest(q){
-  const box = document.getElementById('suggestBox');
-  if(!q){ box.style.display='none'; return; }
-  const ql = q.toLowerCase();
-  const brandMatches = BRANDS.filter(b=>b.name.toLowerCase().includes(ql)||b.booth.toLowerCase().includes(ql)).slice(0,3);
-  const kwMatches = PRODUCT_KEYWORDS.filter(k=>k.toLowerCase().includes(ql)).slice(0,3);
-  let html = '';
-  brandMatches.forEach(b=>{
-    html+=`<div class="suggest-item" onclick="selectSuggest('${b.name.replace(/'/g,"\\'")}')">
-      <span class="st st-brand">品牌</span><span>${b.name}</span>
-      ${b.booth?`<span style="font-size:11px;color:var(--amber);margin-left:4px;">${b.booth}</span>`:''}
-    </div>`;
-  });
-  kwMatches.forEach(k=>{
-    const cnt=BRANDS.filter(b=>b.keywords&&b.keywords.some(kw=>kw.toLowerCase().includes(ql))||b.products&&b.products.some(p=>p.toLowerCase().includes(ql))).length;
-    html+=`<div class="suggest-item" onclick="selectSuggest('${k}')">
-      <span class="st st-kw">商品</span><span>${k}</span>
-      ${cnt>0?`<span class="suggest-count">找到 ${cnt} 個品牌</span>`:''}
-    </div>`;
-  });
-  // AI search hint
-  if(apiKey&&q.length>2){
-    html+=`<div class="suggest-item" onclick="quickAsk('在上聯寵物展，${q}相關的品牌哪個最值得買？請推薦')">
-      <span class="st st-ai">AI</span><span>用 Gemini AI 搜尋「${q}」的最佳選擇</span>
-    </div>`;
-  }
-  if(!html){ box.style.display='none'; return; }
-  box.innerHTML=html; box.style.display='block';
+  const box=document.getElementById('suggestBox');
+  if(!q){box.style.display='none';return;}
+  const ql=q.toLowerCase();
+  const bm=BRANDS.filter(b=>b.name.toLowerCase().includes(ql)||b.booth.toLowerCase().includes(ql)).slice(0,3);
+  const km=KW.filter(k=>k.toLowerCase().includes(ql)).slice(0,3);
+  let h='';
+  bm.forEach(b=>{h+=`<div class="sug-item" onclick="selectSuggest('${esc(b.name)}')"><span class="st st-b">品牌</span><span>${b.name}</span>${b.booth?`<span style="font-size:11px;color:var(--amber);margin-left:4px;">${b.booth}</span>`:''}</div>`;});
+  km.forEach(k=>{const cnt=BRANDS.filter(b=>(b.keywords&&b.keywords.some(w=>w.toLowerCase().includes(ql)))||(b.products&&b.products.some(p=>p.toLowerCase().includes(ql)))).length;h+=`<div class="sug-item" onclick="selectSuggest('${k}')"><span class="st st-k">商品</span><span>${k}</span>${cnt>0?`<span class="sug-cnt">找到 ${cnt} 個品牌</span>`:''}</div>`;});
+  if(apiKey&&q.length>1)h+=`<div class="sug-item" onclick="quickAsk('在上聯寵物展，${q}相關的品牌哪個最值得買？')"><span class="st st-ai">AI</span><span>用 Gemini AI 搜尋「${q}」</span></div>`;
+  if(!h){box.style.display='none';return;}
+  box.innerHTML=h;box.style.display='block';
 }
+function selectSuggest(v){document.getElementById('searchInput').value=v;searchQuery=v;document.getElementById('searchClear').style.display='block';document.getElementById('suggestBox').style.display='none';renderBrands();}
+function showSuggest(){if(searchQuery)renderSuggest(searchQuery);}
+function hideSuggestDelay(){setTimeout(()=>{document.getElementById('suggestBox').style.display='none';},200);}
+function clearSearch(){document.getElementById('searchInput').value='';document.getElementById('searchClear').style.display='none';document.getElementById('suggestBox').style.display='none';searchQuery='';renderBrands();}
 
-function selectSuggest(val){
-  document.getElementById('searchInput').value=val;
-  searchQuery=val;
-  document.getElementById('searchClear').style.display='block';
-  document.getElementById('suggestBox').style.display='none';
-  renderBrands();
-}
-function showSuggest(){ if(searchQuery) renderSuggest(searchQuery); }
-function hideSuggestDelay(){ setTimeout(()=>{ document.getElementById('suggestBox').style.display='none'; },200); }
-function clearSearch(){
-  document.getElementById('searchInput').value='';
-  document.getElementById('searchClear').style.display='none';
-  document.getElementById('suggestBox').style.display='none';
-  searchQuery=''; renderBrands();
-}
-
-// ============================
-// FILTER / SORT
-// ============================
+// ==================== FILTER/SORT ====================
 function toggleCat(cat,el){
-  if(cat==='all'){
-    activeCats=new Set(['all']);
-    document.querySelectorAll('#catChips .chip').forEach(c=>c.classList.remove('active'));
-    el.classList.add('active');
-  } else {
-    activeCats.delete('all');
-    document.querySelector('[data-cat="all"]').classList.remove('active');
-    activeCats.has(cat)?activeCats.delete(cat):activeCats.add(cat);
-    el.classList.toggle('active');
-    if(activeCats.size===0){activeCats.add('all');document.querySelector('[data-cat="all"]').classList.add('active');}
-  }
-  renderBrands(); updateActiveFilterPills();
+  if(cat==='all'){activeCats=new Set(['all']);document.querySelectorAll('#catChips .chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');}
+  else{activeCats.delete('all');document.querySelector('[data-cat="all"]').classList.remove('active');activeCats.has(cat)?activeCats.delete(cat):activeCats.add(cat);el.classList.toggle('active');if(!activeCats.size){activeCats.add('all');document.querySelector('[data-cat="all"]').classList.add('active');}}
+  renderBrands();updateAFPills();
 }
-function setSort(s,el){
-  if(activeSort===s){activeSort='';el.classList.remove('active');}
-  else{activeSort=s;document.querySelectorAll('[data-sort]').forEach(c=>c.classList.remove('active'));el.classList.add('active');}
-  renderBrands(); updateActiveFilterPills();
+function setSort(s,el){if(activeSort===s){activeSort='';el.classList.remove('active');}else{activeSort=s;document.querySelectorAll('[data-sort]').forEach(c=>c.classList.remove('active'));el.classList.add('active');}renderBrands();updateAFPills();}
+function toggleFilter(f,el){if(activeFilters.has(f)){activeFilters.delete(f);el.classList.remove('act-g','act-a','active');}else{activeFilters.add(f);el.classList.add(f==='kitten'?'act-g':'act-a');}renderBrands();updateAFPills();}
+function updateAFPills(){
+  let h='';
+  if(!activeCats.has('all'))activeCats.forEach(c=>{h+=`<span class="af" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue);" onclick="removeCat('${c}')">📂 ${c} ✕</span>`;});
+  if(activeSort){const L={cp_desc:'CP↓',cp_asc:'CP↑',price_desc:'價格↓',price_asc:'價格↑',must:'必買優先'};h+=`<span class="af" style="background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber);" onclick="clearSort()">↕ ${L[activeSort]} ✕</span>`;}
+  if(activeFilters.has('kitten'))h+=`<span class="af" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green);" onclick="removeFilter('kitten')">🐱 幼貓OK ✕</span>`;
+  if(activeFilters.has('mustbuy'))h+=`<span class="af" style="background:var(--red-bg);color:var(--red);border:1px solid var(--red);" onclick="removeFilter('mustbuy')">🔥 必買 ✕</span>`;
+  document.getElementById('activeFilters').innerHTML=h;
 }
-function toggleFilter(f,el){
-  if(activeFilters.has(f)){activeFilters.delete(f);el.classList.remove('active-green','active-amber','active');}
-  else{activeFilters.add(f);el.classList.add(f==='kitten'?'active-green':'active-amber');}
-  renderBrands(); updateActiveFilterPills();
-}
-function updateActiveFilterPills(){
-  let pills='';
-  if(!activeCats.has('all')) activeCats.forEach(c=>{pills+=`<span class="af-pill" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue);" onclick="removeCat('${c}')">📂 ${c} ✕</span>`;});
-  if(activeSort){const L={cp_desc:'CP值↓',cp_asc:'CP值↑',price_desc:'價格↓',price_asc:'價格↑',must:'必買優先'};pills+=`<span class="af-pill" style="background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber);" onclick="clearSort()">↕ ${L[activeSort]} ✕</span>`;}
-  if(activeFilters.has('kitten'))pills+=`<span class="af-pill" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green);" onclick="removeFilter('kitten')">🐱 幼貓OK ✕</span>`;
-  if(activeFilters.has('mustbuy'))pills+=`<span class="af-pill" style="background:var(--red-bg);color:var(--red);border:1px solid var(--red);" onclick="removeFilter('mustbuy')">🔥 必買 ✕</span>`;
-  document.getElementById('activeFilters').innerHTML=pills;
-}
-function removeCat(cat){activeCats.delete(cat);document.querySelector(`[data-cat="${cat}"]`).classList.remove('active');if(activeCats.size===0){activeCats.add('all');document.querySelector('[data-cat="all"]').classList.add('active');}renderBrands();updateActiveFilterPills();}
-function clearSort(){activeSort='';document.querySelectorAll('[data-sort]').forEach(c=>c.classList.remove('active'));renderBrands();updateActiveFilterPills();}
-function removeFilter(f){activeFilters.delete(f);document.querySelector(`[data-filter="${f}"]`).classList.remove('active-green','active-amber','active');renderBrands();updateActiveFilterPills();}
+function removeCat(c){activeCats.delete(c);document.querySelector(`[data-cat="${c}"]`).classList.remove('active');if(!activeCats.size){activeCats.add('all');document.querySelector('[data-cat="all"]').classList.add('active');}renderBrands();updateAFPills();}
+function clearSort(){activeSort='';document.querySelectorAll('[data-sort]').forEach(c=>c.classList.remove('active'));renderBrands();updateAFPills();}
+function removeFilter(f){activeFilters.delete(f);document.querySelector(`[data-filter="${f}"]`).classList.remove('act-g','act-a','active');renderBrands();updateAFPills();}
 
-// ============================
-// BRAND CARDS
-// ============================
-function cpStars(n){let s='';for(let i=1;i<=5;i++)s+=(i<=n?'★':'☆');return s;}
+// ==================== BRAND CARDS ====================
+function stars(n){let s='';for(let i=1;i<=5;i++)s+=(i<=n?'★':'☆');return s;}
+function esc(s){return s.replace(/'/g,"\\'").replace(/"/g,'&quot;');}
 
 function getBrands(){
   const ql=searchQuery.toLowerCase();
   let f=BRANDS.filter(b=>{
-    if(ql){
-      const ok=b.name.toLowerCase().includes(ql)||b.booth.toLowerCase().includes(ql)||(b.keywords&&b.keywords.some(k=>k.toLowerCase().includes(ql)))||(b.products&&b.products.some(p=>p.toLowerCase().includes(ql)))||b.cats.some(c=>c.toLowerCase().includes(ql));
-      if(!ok)return false;
-    }
+    if(ql){const ok=b.name.toLowerCase().includes(ql)||b.booth.toLowerCase().includes(ql)||(b.keywords&&b.keywords.some(k=>k.toLowerCase().includes(ql)))||(b.products&&b.products.some(p=>p.toLowerCase().includes(ql)))||b.cats.some(c=>c.toLowerCase().includes(ql));if(!ok)return false;}
     if(!activeCats.has('all')&&!b.cats.some(c=>activeCats.has(c)))return false;
     if(activeFilters.has('kitten')&&!b.kittenOk)return false;
     if(activeFilters.has('mustbuy')&&!b.mustBuy)return false;
@@ -721,193 +656,301 @@ function getBrands(){
 }
 
 function renderBrands(){
-  const filtered=getBrands();
-  document.getElementById('resultCount').textContent=`找到 ${filtered.length} 個品牌`;
-  const inCompare=new Set(compareList.map(x=>x.name));
-  document.getElementById('brandGrid').innerHTML=filtered.map(b=>`
-    <div class="brand-card" onclick="openModal('${b.name.replace(/'/g,"\\'")}')">
-      <div class="brand-header">
-        <div class="brand-name">${b.name}</div>
-        ${b.booth?`<div class="brand-booth">📍 ${b.booth}</div>`:''}
+  const fl=getBrands();
+  document.getElementById('resultCount').textContent=`找到 ${fl.length} 個品牌`;
+  const inCmp=new Set(compareList.map(x=>x.name));
+  document.getElementById('brandGrid').innerHTML=fl.map(b=>`
+    <div class="bcard" onclick="openModal('${esc(b.name)}')">
+      <div class="bh"><div class="bn">${b.name}</div>${b.booth?`<div class="bb">📍 ${b.booth}</div>`:''}</div>
+      <div class="bcats">${b.cats.map(c=>`<span class="ct">${c}</span>`).join('')}</div>
+      <div class="bm">
+        <span class="cps">${stars(b.cp)}</span>
+        <span style="font-size:11px;color:var(--amber);">${PL[b.price]||''}</span>
+        ${b.mustBuy?'<span class="mb">🔥 必買</span>':''}
+        ${b.kittenOk?'<span class="ko">🐱 幼貓OK</span>':'<span class="kw">⚠️ 確認適用</span>'}
       </div>
-      <div class="brand-cats">${b.cats.map(c=>`<span class="cat-tag">${c}</span>`).join('')}</div>
-      <div class="brand-meta">
-        <span class="cp-stars">${cpStars(b.cp)}</span>
-        <span style="font-size:11px;color:var(--amber);">${PRICE_LABEL[b.price]||''}</span>
-        ${b.mustBuy?'<span class="must-buy">🔥 必買</span>':''}
-        ${b.kittenOk?'<span class="kitten-ok">🐱 幼貓OK</span>':'<span class="kitten-warn">⚠️ 確認適用</span>'}
-      </div>
-      <div class="brand-snippet">${b.intro.substring(0,55)}...</div>
-      <div class="card-links" onclick="event.stopPropagation()">
-        ${b.shopee?`<a class="cl-btn shopee" href="${b.shopee}" target="_blank">🛍 蝦皮</a>`:`<span class="cl-btn" style="opacity:.35;cursor:default;">🛍 蝦皮</span>`}
-        ${b.web?`<a class="cl-btn web" href="${b.web}" target="_blank">🌐 官網</a>`:`<span class="cl-btn" style="opacity:.35;cursor:default;">🌐 官網</span>`}
-        <button class="cl-btn compare ${inCompare.has(b.name)?'added':''}" onclick="toggleCompare('${b.name.replace(/'/g,"\\'")}')">
-          ${inCompare.has(b.name)?'✓ 比價中':'⚖️ 比價'}
-        </button>
-        ${apiKey?`<button class="cl-btn ai-search" onclick="quickAsk('請詳細介紹${b.name}，它適合我的4個月英短幼貓嗎？蝦皮上大概多少錢？')">✨ AI分析</button>`:''}
+      <div class="bsnip">${b.intro.substring(0,52)}...</div>
+      <div class="clinks" onclick="event.stopPropagation()">
+        ${b.shopee?`<a class="clb sp" href="${b.shopee}" target="_blank">🛍 蝦皮</a>`:`<span class="clb" style="opacity:.35;cursor:default;">🛍 蝦皮</span>`}
+        ${b.web?`<a class="clb wb" href="${b.web}" target="_blank">🌐 官網</a>`:`<span class="clb" style="opacity:.35;cursor:default;">🌐 官網</span>`}
+        <button class="clb cp ${inCmp.has(b.name)?'added':''}" onclick="toggleCompare('${esc(b.name)}')">${inCmp.has(b.name)?'✓ 比價中':'⚖️ 比價'}</button>
+        ${apiKey?`<button class="clb ai" onclick="quickAsk('請介紹${b.name}，它適合4個月英短幼貓嗎？蝦皮大概多少錢？')">✨ AI</button>`:''}
       </div>
     </div>`).join('');
 }
 
-// ============================
-// MODAL
-// ============================
+// ==================== MODAL ====================
 function openModal(name){
   const b=BRANDS.find(x=>x.name===name);if(!b)return;
   document.getElementById('mBrandName').textContent=b.name;
   document.getElementById('mBooth').textContent=b.booth?'📍 攤位：'+b.booth:'攤位：請現場確認';
-  document.getElementById('mCats').innerHTML=b.cats.map(c=>`<span class="cat-tag">${c}</span>`).join('');
-  const inCompare=compareList.some(x=>x.name===b.name);
-  const refStr=b.refPrice?Object.entries(b.refPrice).map(([cat,[mn,mx]])=>`${cat}：$${mn}~$${mx}`).join('、'):'無資料';
+  document.getElementById('mCats').innerHTML=b.cats.map(c=>`<span class="ct">${c}</span>`).join('');
+  const inCmp=compareList.some(x=>x.name===b.name);
+  const refStr=b.refPrice?Object.entries(b.refPrice).map(([c,[a,z]])=>`${c}：$${a}~$${z}`).join('、'):'無資料';
   document.getElementById('modalBody').innerHTML=`
-    <div class="section-title">品牌介紹</div><div class="info-box">${b.intro}</div>
-    <div class="section-title">主打商品</div><div class="info-box">${b.products.map(p=>`• ${p}`).join('<br>')}</div>
-    <div class="section-title">🏷️ 展場優惠</div><div class="highlight-box">${b.deal||'請現場詢問'}</div>
-    <div class="section-title">💰 網路參考價</div>
-    <div class="info-box" style="background:var(--green-bg);border-left:3px solid var(--green);border-radius:0 8px 8px 0;">${refStr}<br><span style="font-size:11px;color:var(--text2);display:block;margin-top:3px;">※ 展前研究資料，實際以現場為準</span></div>
-    <div class="section-title">🌐 網路評價</div><div class="info-box">${b.review}</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
-      <div><div class="section-title" style="color:var(--green);">✓ 優點</div><ul class="pro-list">${b.pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
-      <div><div class="section-title" style="color:var(--red);">✗ 缺點</div><ul class="con-list">${b.cons.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+    <div class="stitle">品牌介紹</div><div class="ibox">${b.intro}</div>
+    <div class="stitle">主打商品</div><div class="ibox">${b.products.map(p=>`• ${p}`).join('<br>')}</div>
+    <div class="stitle">🏷️ 展場優惠</div><div class="hbox">${b.deal||'請現場詢問'}</div>
+    <div class="stitle">💰 網路參考價</div>
+    <div class="ibox" style="background:var(--green-bg);border-left:3px solid var(--green);border-radius:0 8px 8px 0;">${refStr}<br><span style="font-size:11px;color:var(--text2);display:block;margin-top:2px;">※ 展前研究資料，實際以現場為準</span></div>
+    <div class="stitle">🌐 網路評價</div><div class="ibox">${b.review}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px;">
+      <div><div class="stitle" style="color:var(--green);">✓ 優點</div><ul class="plist">${b.pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+      <div><div class="stitle" style="color:var(--red);">✗ 缺點</div><ul class="clist">${b.cons.map(c=>`<li>${c}</li>`).join('')}</ul></div>
     </div>
-    ${b.kittenNote?`<div class="section-title">🐱 英短幼貓注意</div><div class="info-box" style="background:${b.kittenOk?'var(--green-bg)':'var(--amber-bg)'};border-left:3px solid ${b.kittenOk?'var(--green)':'var(--amber)'};">${b.kittenNote}</div>`:''}
-    <div class="section-title">快速連結</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-      ${b.shopee?`<a class="cl-btn shopee" href="${b.shopee}" target="_blank" style="padding:8px 16px;font-size:13px;">🛍 蝦皮</a>`:''}
-      ${b.web?`<a class="cl-btn web" href="${b.web}" target="_blank" style="padding:8px 16px;font-size:13px;">🌐 官網</a>`:''}
-      <button class="cl-btn compare ${inCompare?'added':''}" style="padding:8px 16px;font-size:13px;" id="modalCompareBtn" onclick="toggleCompareFromModal('${b.name.replace(/'/g,"\\'")}')">
-        ${inCompare?'✓ 比價中':'⚖️ 加入比價'}
-      </button>
+    ${b.kittenNote?`<div class="stitle">🐱 英短幼貓注意</div><div class="ibox" style="background:${b.kittenOk?'var(--green-bg)':'var(--amber-bg)'};border-left:3px solid ${b.kittenOk?'var(--green)':'var(--amber)'};">${b.kittenNote}</div>`:''}
+    <div class="stitle">快速連結</div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:7px;">
+      ${b.shopee?`<a class="clb sp" href="${b.shopee}" target="_blank" style="padding:7px 14px;font-size:12px;">🛍 蝦皮</a>`:''}
+      ${b.web?`<a class="clb wb" href="${b.web}" target="_blank" style="padding:7px 14px;font-size:12px;">🌐 官網</a>`:''}
+      <button class="clb cp ${inCmp?'added':''}" style="padding:7px 14px;font-size:12px;" id="mCmpBtn" onclick="toggleCompareFromModal('${esc(b.name)}')">${inCmp?'✓ 比價中':'⚖️ 加入比價'}</button>
     </div>
-    ${apiKey?`<button onclick="closeModal();quickAsk('請幫我深入分析${b.name}：1)適合4個月英短幼貓嗎 2)蝦皮上哪個賣家評價好、大概多少錢 3)展場有沒有什麼要特別注意的')" style="width:100%;padding:10px;background:var(--gemini-bg);color:var(--gemini);border:1.5px solid var(--gemini);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:10px;">✨ Gemini AI 深度分析這個品牌</button>`:''}
-    <div class="section-title">加入購物清單</div>
-    <div class="add-to-cart-modal">
-      <input class="item-input" id="cartItemName" placeholder="商品名稱" value="${b.name}">
-      <input class="qty-input" id="cartQty" type="number" min="1" value="1">
-      <input class="price-input" id="cartPrice" type="number" min="0" placeholder="$ 單價">
-      <button class="btn-add" onclick="addToCart('${b.name.replace(/'/g,"\\'")}')">加入 +</button>
+    ${apiKey?`<button onclick="closeModal();quickAsk('請深入分析${b.name}：1)適合4個月英短幼貓嗎 2)蝦皮哪個賣家評價好、大概多少錢 3)展場有什麼要注意的')" style="width:100%;padding:9px;background:var(--gemini-bg);color:var(--gemini);border:1.5px solid var(--gemini);border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:8px;">✨ Gemini AI 深度分析這個品牌</button>`:''}
+    <div class="stitle">加入購物清單</div>
+    <div class="cart-row">
+      <input class="ii" id="cIn" value="${b.name}" placeholder="商品名稱">
+      <input class="qi" id="qIn" type="number" min="1" value="1">
+      <input class="pi" id="pIn" type="number" min="0" placeholder="$單價">
+      <button class="badd" onclick="addToCart('${esc(b.name)}')">加入 +</button>
     </div>`;
   document.getElementById('modalOverlay').classList.add('open');
 }
 function toggleCompareFromModal(name){
   toggleCompare(name);
-  const btn=document.getElementById('modalCompareBtn');if(!btn)return;
+  const btn=document.getElementById('mCmpBtn');if(!btn)return;
   const inC=compareList.some(x=>x.name===name);
   btn.textContent=inC?'✓ 比價中':'⚖️ 加入比價';
-  btn.className='cl-btn compare'+(inC?' added':'');
+  btn.className='clb cp'+(inC?' added':'');
 }
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
 function closeModalOnBg(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
 
-// ============================
-// COMPARE
-// ============================
+// ==================== COMPARE ====================
 function toggleCompare(name){
   const b=BRANDS.find(x=>x.name===name);if(!b)return;
   const idx=compareList.findIndex(x=>x.name===name);
-  if(idx>=0){compareList.splice(idx,1);delete comparePrices[name];}
+  if(idx>=0){compareList.splice(idx,1);}
   else{
     if(compareList.length>=4){alert('最多同時比較 4 個品牌！');return;}
-    compareList.push({name:b.name});
-    if(!comparePrices[name])comparePrices[name]={expo:'',note:''};
+    compareList.push({name});
+    if(!cpData[name])cpData[name]={expo:'',net:'',note:''};
   }
-  saveCompare();savePrices();renderBrands();renderCompare();
+  saveCmp();saveCpData();renderBrands();renderCompare();
 }
 
-function setCompareCat(cat){
-  compareCatFilter=cat;
+function clearAllCompare(){
+  if(!compareList.length){alert('比價台已經是空的');return;}
+  if(!confirm('確定要清除所有比價品牌？'))return;
+  compareList=[];saveCmp();renderBrands();renderCompare();
+}
+
+function setCmpCat(cat){
+  cmpCatFilter=cat;
   document.querySelectorAll('.ccat').forEach(c=>c.classList.remove('active'));
   document.querySelector(`[data-ccat="${cat}"]`).classList.add('active');
-  renderCompareTable();
+  renderCmpTable();
 }
 
 function renderCompare(){
   const usedCats=new Set();
   compareList.forEach(item=>{const b=BRANDS.find(x=>x.name===item.name);if(b)b.cats.forEach(c=>usedCats.add(c));});
-  let catHtml=`<span class="ccat active" data-ccat="all" onclick="setCompareCat('all')">全部</span>`;
-  usedCats.forEach(c=>{catHtml+=`<span class="ccat" data-ccat="${c}" onclick="setCompareCat('${c}')">${c}</span>`;});
-  document.getElementById('compareCatRow').innerHTML=catHtml;
+  let ch=`<span class="ccat active" data-ccat="all" onclick="setCmpCat('all')">全部</span>`;
+  usedCats.forEach(c=>{ch+=`<span class="ccat" data-ccat="${c}" onclick="setCmpCat('${c}')">${c}</span>`;});
+  document.getElementById('compareCatRow').innerHTML=ch;
 
-  const slot=document.getElementById('compareSlot');
   const hint=document.getElementById('compareHint');
-  if(compareList.length===0){
+  const slot=document.getElementById('compareSlot');
+  if(!compareList.length){
+    hint.textContent='從品牌頁點「⚖️ 比價」加入品牌，選 2 個以上即可開始比較';
     slot.innerHTML='';
-    hint.textContent='從品牌頁點「⚖️ 比價」加入品牌，最多4個';
-    document.getElementById('compareTable').innerHTML='<div style="text-align:center;padding:40px 20px;color:var(--text2);">還沒有加入任何品牌<br><span style="font-size:13px;display:block;margin-top:8px;">回到品牌頁，點擊品牌卡片底部的「⚖️ 比價」</span></div>';
+    document.getElementById('compareTable').innerHTML='<div style="text-align:center;padding:36px 18px;color:var(--text2);">尚未加入任何品牌<br><span style="font-size:12px;display:block;margin-top:7px;">回到品牌頁，點品牌卡片底部的「⚖️ 比價」</span></div>';
     document.getElementById('aiCompareBtn').style.display='none';
     return;
   }
-  hint.textContent=`已加入 ${compareList.length}/4 個品牌`;
+  hint.textContent=`已加入 ${compareList.length}/4 個品牌，${compareList.length>=2?'可以開始比較！':'再加入一個品牌就可以比較'}`;
   slot.innerHTML=compareList.map(item=>{
     const b=BRANDS.find(x=>x.name===item.name);
-    return `<span class="compare-pill">${b?b.name:item.name} <span class="compare-pill-rm" onclick="toggleCompare('${(b?b.name:item.name).replace(/'/g,"\\'")}')">✕</span></span>`;
+    return `<span class="cpill">${b?b.name:item.name} <span class="cpill-rm" onclick="toggleCompare('${esc(b?b.name:item.name)}')">✕</span></span>`;
   }).join('');
-  renderCompareTable();
+  renderCmpTable();
   document.getElementById('aiCompareBtn').style.display=compareList.length>=2?'block':'none';
 }
 
-function renderCompareTable(){
+function renderCmpTable(){
   let brands=compareList.map(item=>BRANDS.find(x=>x.name===item.name)).filter(Boolean);
-  if(compareCatFilter!=='all')brands=brands.filter(b=>b.cats.includes(compareCatFilter));
-  const tableDiv=document.getElementById('compareTable');
-  if(brands.length<2){tableDiv.innerHTML='<div style="text-align:center;padding:20px;color:var(--text2);">'+(brands.length<1?'這個品類沒有已加入的品牌':'再加入至少一個品牌才能比較')+'</div>';return;}
+  if(cmpCatFilter!=='all')brands=brands.filter(b=>b.cats.includes(cmpCatFilter));
+  const tbl=document.getElementById('compareTable');
+  if(brands.length<2){
+    tbl.innerHTML=`<div style="text-align:center;padding:16px;color:var(--text2);">${brands.length<1?'這個品類沒有已加入的品牌':'再加入至少一個品牌才能開始比較'}</div>`;
+    return;
+  }
 
-  const refCat=compareCatFilter!=='all'?compareCatFilter:(brands[0].cats[0]||'');
-  const expoPrices=brands.map(b=>{const p=comparePrices[b.name];return p&&p.expo!==''?parseFloat(p.expo):null;});
+  const refCat=cmpCatFilter!=='all'?cmpCatFilter:(brands[0].cats[0]||'');
+  const expoP=brands.map(b=>{const d=cpData[b.name];return d&&d.expo!==''?parseFloat(d.expo):null;});
+  const netP=brands.map(b=>{const d=cpData[b.name];return d&&d.net!==''?parseFloat(d.net):null;});
   const refMins=brands.map(b=>b.refPrice&&b.refPrice[refCat]?b.refPrice[refCat][0]:null);
+  const refMaxs=brands.map(b=>b.refPrice&&b.refPrice[refCat]?b.refPrice[refCat][1]:null);
+
   const maxCp=Math.max(...brands.map(b=>b.cp));
-  const minPrice=Math.min(...brands.map(b=>b.price));
-  const validExpo=expoPrices.filter(p=>p!==null);
+  const minPriceLevel=Math.min(...brands.map(b=>b.price));
+  const validExpo=expoP.filter(p=>p!==null);
   const minExpo=validExpo.length>0?Math.min(...validExpo):null;
+  const validNet=netP.filter(p=>p!==null);
+  const minNet=validNet.length>0?Math.min(...validNet):null;
   const validRef=refMins.filter(p=>p!==null);
   const minRef=validRef.length>0?Math.min(...validRef):null;
 
-  let th=`<th class="hlbl">項目</th>`;
+  let th=`<th class="hl">項目</th>`;
   brands.forEach(b=>{th+=`<th>${b.name}</th>`;});
 
-  const R=(label,cells,sep=false)=>sep?`<tr><td class="sep" colspan="${brands.length+1}">${label}</td></tr>`:`<tr><td class="lbl">${label}</td>${cells}</tr>`;
+  const R=(label,cells,sep=false)=>sep
+    ?`<tr><td class="sep" colspan="${brands.length+1}">${label}</td></tr>`
+    :`<tr><td class="lb">${label}</td>${cells}</tr>`;
+
   let rows='';
   rows+=R('── 基本資訊 ──','',true);
-  rows+=R('⭐ CP值',brands.map(b=>`<td class="${b.cp===maxCp?'best-val':''}">${cpStars(b.cp)}</td>`).join(''));
-  rows+=R('💰 價格定位',brands.map(b=>`<td class="${b.price===minPrice?'best-val':''}">${PRICE_LABEL[b.price]||'-'}</td>`).join(''));
-  rows+=R('🐱 幼貓OK',brands.map(b=>`<td class="${b.kittenOk?'best-val':''}">${b.kittenOk?'✓ 適合':'✗ 確認'}</td>`).join(''));
-  rows+=R('🔥 必買',brands.map(b=>`<td class="${b.mustBuy?'best-val':''}">${b.mustBuy?'✓ 必買':'-'}</td>`).join(''));
+  rows+=R('⭐ CP值',brands.map(b=>`<td class="${b.cp===maxCp?'bv':''}">${stars(b.cp)}</td>`).join(''));
+  rows+=R('💰 價格定位',brands.map(b=>`<td class="${b.price===minPriceLevel?'bv':''}">${PL[b.price]||'-'}</td>`).join(''));
+  rows+=R('🐱 幼貓OK',brands.map(b=>`<td class="${b.kittenOk?'bv':''}">${b.kittenOk?'✓ 適合':'✗ 確認'}</td>`).join(''));
+  rows+=R('🔥 必買',brands.map(b=>`<td class="${b.mustBuy?'bv':''}">${b.mustBuy?'✓ 必買':'-'}</td>`).join(''));
   rows+=R('📍 攤位',brands.map(b=>`<td>${b.booth||'確認'}</td>`).join(''));
-  rows+=R('── 價格比較 ──','',true);
-  rows+=R(`🏷️ 網路參考價(${refCat||'依品類'})`,brands.map((b,i)=>{const mn=refMins[i],mx=b.refPrice&&b.refPrice[refCat]?b.refPrice[refCat][1]:null;return `<td class="${mn!==null&&mn===minRef?'best-val':''}">${mn!==null?`$${mn}~$${mx}`:'—'}</td>`;}).join(''));
-  rows+=R('💵 展場現場價<br><span style="font-size:9px;">(請輸入)</span>',brands.map((b,i)=>{
-    const val=comparePrices[b.name]?comparePrices[b.name].expo:'';
-    const isBest=expoPrices[i]!==null&&expoPrices[i]===minExpo;
-    return `<td style="${isBest?'background:#EAF5EF;':''}" onclick="event.stopPropagation()">
-      <input class="price-input-cell" type="number" placeholder="$" value="${val}" oninput="updateExpoPrice('${b.name.replace(/'/g,"\\'")}',this.value)" style="${isBest?'border-color:var(--green);':''}" min="0">
-      ${isBest?'<div class="saving-pos">最低✓</div>':''}
-    </td>`;
-  }).join(''));
-  rows+=R('📊 展場 vs 網路',brands.map((b,i)=>{
-    const expo=expoPrices[i],refMin=refMins[i];
-    if(expo===null||refMin===null)return '<td style="font-size:11px;color:var(--text2);">輸入後顯示</td>';
-    const saving=Math.round((1-expo/refMin)*100);
-    return `<td>${saving>0?`<span class="saving-pos">省 ${saving}% ✓</span>`:saving<0?`<span class="saving-neg">貴 ${Math.abs(saving)}%</span>`:'同網路價'}</td>`;
-  }).join(''));
-  rows+=R('── 快速連結 ──','',true);
-  rows+=R('🛍 蝦皮',brands.map(b=>`<td>${b.shopee?`<a class="link-sm link-shopee" href="${b.shopee}" target="_blank">開啟</a>`:'—'}</td>`).join(''));
-  rows+=R('🌐 官網',brands.map(b=>`<td>${b.web?`<a class="link-sm link-web" href="${b.web}" target="_blank">開啟</a>`:'—'}</td>`).join(''));
-  rows+=R('── 現場備註 ──','',true);
-  rows+=R('📝 備註',brands.map(b=>{const val=comparePrices[b.name]?comparePrices[b.name].note:'';return `<td onclick="event.stopPropagation()"><input class="note-input-cell" placeholder="備註" value="${val}" oninput="updateNote('${b.name.replace(/'/g,"\\'")}',this.value)"></td>`;}).join(''));
 
-  tableDiv.innerHTML=`<div class="ctable-wrap"><table class="ctable"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table></div><div style="font-size:11px;color:var(--text2);margin-top:6px;">✓ 綠色 = 該項目最佳</div>`;
+  rows+=R('── 價格比較 ──','',true);
+  rows+=R(`🏷️ 網路參考價<br><span style="font-size:9px;">(${refCat||'依品類'})</span>`,
+    brands.map((b,i)=>`<td class="${refMins[i]!==null&&refMins[i]===minRef?'bv':''}">${refMins[i]!==null?`$${refMins[i]}~$${refMaxs[i]}`:'—'}</td>`).join(''));
+
+  // 新增：網路實際價格（使用者自行填入）
+  rows+=R('🌐 網路實際價格<br><span style="font-size:9px;">(請自行查詢後填入)</span>',
+    brands.map((b,i)=>{
+      const val=cpData[b.name]?cpData[b.name].net:'';
+      const isBest=netP[i]!==null&&netP[i]===minNet&&validNet.length>1;
+      return `<td class="net-cell" style="${isBest?'background:#EAF5EF;':''}" onclick="event.stopPropagation()">
+        <input class="pc" type="number" placeholder="$" value="${val}"
+          oninput="updateCpField('${esc(b.name)}','net',this.value)"
+          style="${isBest?'border-color:var(--green);':''}" min="0">
+        <div class="best-badge sp-pos" style="display:${isBest&&netP[i]!==null?'block':'none'}">最低✓</div>
+      </td>`;
+    }).join(''));
+
+  rows+=R('💵 展場現場價<br><span style="font-size:9px;">(現場輸入)</span>',
+    brands.map((b,i)=>{
+      const val=cpData[b.name]?cpData[b.name].expo:'';
+      const isBest=expoP[i]!==null&&expoP[i]===minExpo;
+      return `<td class="expo-cell" style="${isBest?'background:#EAF5EF;':''}" onclick="event.stopPropagation()">
+        <input class="pc" type="number" placeholder="$" value="${val}"
+          oninput="updateCpField('${esc(b.name)}','expo',this.value)"
+          style="${isBest?'border-color:var(--green);':''}" min="0">
+        <div class="best-badge sp-pos" style="display:${isBest&&expoP[i]!==null?'block':'none'}">最低✓</div>
+      </td>`;
+    }).join(''));
+
+  // 展場 vs 網路實際價格比較
+  rows+=R('📊 展場 vs 網路<br><span style="font-size:9px;">(展場 vs 網路實際)</span>',
+    brands.map((b,i)=>{
+      const expo=expoP[i], net=netP[i];
+      if(expo===null||net===null) return '<td class="saving-cell"><span style="font-size:10px;color:var(--text2);">填入後顯示</span></td>';
+      const saving=Math.round((1-expo/net)*100);
+      const text=saving>0?`<span class="sp-pos">展場省 ${saving}% ✓</span>`:saving<0?`<span class="sp-neg">展場貴 ${Math.abs(saving)}%</span>`:'<span style="font-size:10px;">同網路價</span>';
+      return `<td class="saving-cell">${text}</td>`;
+    }).join(''));
+
+  rows+=R('── 連結 ──','',true);
+  rows+=R('🛍 蝦皮',brands.map(b=>`<td>${b.shopee?`<a class="lsm lsp" href="${b.shopee}" target="_blank">開啟</a>`:'—'}</td>`).join(''));
+  rows+=R('🌐 官網',brands.map(b=>`<td>${b.web?`<a class="lsm lwb" href="${b.web}" target="_blank">開啟</a>`:'—'}</td>`).join(''));
+
+  rows+=R('── 現場備註 ──','',true);
+  rows+=R('📝 備註<br><span style="font-size:9px;">(可存入筆記)</span>',
+    brands.map(b=>{
+      const val=cpData[b.name]?cpData[b.name].note:'';
+      return `<td onclick="event.stopPropagation()">
+        <input class="nc" placeholder="備註" value="${val}"
+          oninput="updateCpField('${esc(b.name)}','note',this.value)">
+      </td>`;
+    }).join(''));
+
+  tbl.innerHTML=`<div class="ctbl-wrap"><table class="ctbl"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table></div>
+    <div style="font-size:10px;color:var(--text2);margin-top:5px;">✓ 綠色 = 該項目最佳值</div>
+    <button onclick="syncCmpToNotes()" style="margin-top:8px;width:100%;padding:8px;background:var(--purple-bg);color:var(--purple);border:1.5px solid var(--purple);border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;">📝 將備註與比較結果存入筆記頁</button>`;
 }
 
-function updateExpoPrice(name,val){if(!comparePrices[name])comparePrices[name]={expo:'',note:''};comparePrices[name].expo=val;savePrices();}
-function updateNote(name,val){if(!comparePrices[name])comparePrices[name]={expo:'',note:''};comparePrices[name].note=val;savePrices();}
+function updateCpField(name,field,val){
+  if(!cpData[name])cpData[name]={expo:'',net:'',note:''};
+  cpData[name][field]=val;
+  saveCpData();
+  // 即時更新差距顯示
+  updateSavingRow();
+}
 
-// ============================
-// CART
-// ============================
+function updateSavingRow(){
+  const brands=compareList.map(item=>BRANDS.find(x=>x.name===item.name)).filter(Boolean);
+  const filtered=cmpCatFilter!=='all'?brands.filter(b=>b.cats.includes(cmpCatFilter)):brands;
+  if(filtered.length<2)return;
+  // 更新展場 vs 網路那行
+  const savingCells=document.querySelectorAll('.saving-cell');
+  filtered.forEach((b,i)=>{
+    if(!savingCells[i])return;
+    const d=cpData[b.name]||{expo:'',net:''};
+    const expo=d.expo!=='' && d.expo!==null?parseFloat(d.expo):null;
+    const net=d.net!=='' && d.net!==null?parseFloat(d.net):null;
+    if(expo===null||net===null){
+      savingCells[i].innerHTML='<span style="font-size:10px;color:#7A6458;">填入後顯示</span>';
+    } else {
+      const pct=Math.round((1-expo/net)*100);
+      if(pct>0) savingCells[i].innerHTML='<span class="sp-pos">展場省 '+pct+'% ✓</span>';
+      else if(pct<0) savingCells[i].innerHTML='<span class="sp-neg">展場貴 '+Math.abs(pct)+'%</span>';
+      else savingCells[i].innerHTML='<span style="font-size:10px;">同網路價</span>';
+    }
+  });
+  // 更新最低價標記
+  const expoVals=filtered.map(b=>{const d=cpData[b.name];return d&&d.expo!=='' ?parseFloat(d.expo):null;});
+  const netVals=filtered.map(b=>{const d=cpData[b.name];return d&&d.net!=='' ?parseFloat(d.net):null;});
+  const minExpo=Math.min(...expoVals.filter(p=>p!==null));
+  const minNet=Math.min(...netVals.filter(p=>p!==null));
+  document.querySelectorAll('.expo-cell').forEach((cell,i)=>{
+    if(i>=filtered.length)return;
+    const isBest=expoVals[i]!==null&&expoVals[i]===minExpo&&expoVals.filter(p=>p!==null).length>1;
+    cell.style.background=isBest?'#EAF5EF':'';
+    const b=cell.querySelector('.best-badge');if(b)b.style.display=isBest?'block':'none';
+    const inp=cell.querySelector('input');if(inp)inp.style.borderColor=isBest?'var(--green)':'';
+  });
+  document.querySelectorAll('.net-cell').forEach((cell,i)=>{
+    if(i>=filtered.length)return;
+    const isBest=netVals[i]!==null&&netVals[i]===minNet&&netVals.filter(p=>p!==null).length>1;
+    cell.style.background=isBest?'#EAF5EF':'';
+    const b=cell.querySelector('.best-badge');if(b)b.style.display=isBest?'block':'none';
+    const inp=cell.querySelector('input');if(inp)inp.style.borderColor=isBest?'var(--green)':'';
+  });
+}
+
+function syncCmpToNotes(){
+  const brands=compareList.map(item=>BRANDS.find(x=>x.name===item.name)).filter(Boolean);
+  if(!brands.length){alert('比價台沒有品牌');return;}
+  const now=new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
+  brands.forEach(b=>{
+    const d=cpData[b.name]||{expo:'',net:'',note:''};
+    const expo=d.expo?parseFloat(d.expo):null;
+    const net=d.net?parseFloat(d.net):null;
+    let content=`🏪 攤位：${b.booth||'確認'}`;
+    if(net!==null)content+=`\n🌐 網路實際價：$${d.net}`;
+    if(expo!==null)content+=`\n💵 展場現場價：$${d.expo}`;
+    if(expo!==null&&net!==null){
+      const saving=Math.round((1-expo/net)*100);
+      content+=`\n📊 展場 vs 網路：${saving>0?`省 ${saving}% ✓`:saving<0?`貴 ${Math.abs(saving)}%`:'同網路價'}`;
+    }
+    if(d.note)content+=`\n📝 備註：${d.note}`;
+    manualNotes.push({id:Date.now()+Math.random(),title:`${b.name}（${now}）`,content});
+  });
+  saveNotes();
+  renderManualNotes();
+  alert(`✓ 已將 ${brands.length} 個品牌的比較結果存入筆記！`);
+  showPage('notes');
+}
+
+// ==================== CART ====================
 function addToCart(brandName){
-  const name=document.getElementById('cartItemName').value||brandName;
-  const qty=parseInt(document.getElementById('cartQty').value)||1;
-  const price=parseFloat(document.getElementById('cartPrice').value)||0;
+  const name=document.getElementById('cIn').value||brandName;
+  const qty=parseInt(document.getElementById('qIn').value)||1;
+  const price=parseFloat(document.getElementById('pIn').value)||0;
   cart.push({id:Date.now(),brand:brandName,name,qty,price,done:false});
   saveCart();renderCart();closeModal();showPage('cart');
 }
@@ -916,28 +959,84 @@ function renderCart(){
   document.getElementById('cartTotal').textContent=`$${total.toLocaleString()}`;
   document.getElementById('cartCount').textContent=cart.length?`共 ${cart.length} 項商品`:'尚未加入任何商品';
   const list=document.getElementById('cartList');
-  if(!cart.length){list.innerHTML='<div class="cart-empty">🛒 空的，從品牌頁加入商品</div>';return;}
+  if(!cart.length){list.innerHTML='<div class="ce">🛒 空的，從品牌頁加入商品</div>';return;}
   list.innerHTML=cart.map(item=>`
-    <div class="cart-item" style="${item.done?'opacity:.5;':''}">
-      <input type="checkbox" class="cart-item-check" ${item.done?'checked':''} onchange="toggleCart(${item.id})">
-      <div class="cart-item-info">
-        <div class="cart-item-brand">${item.brand}</div>
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-detail">數量：${item.qty} × $${item.price}</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
-        <div class="cart-item-price">$${(item.qty*item.price).toLocaleString()}</div>
-        <button class="cart-item-del" onclick="removeCart(${item.id})">✕</button>
+    <div class="ci" style="${item.done?'opacity:.5;':''}">
+      <input type="checkbox" class="cic" ${item.done?'checked':''} onchange="toggleCart(${item.id})">
+      <div class="cii"><div class="cibr">${item.brand}</div><div class="cinm">${item.name}</div><div class="cide">數量：${item.qty} × $${item.price}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">
+        <div class="cipr">$${(item.qty*item.price).toLocaleString()}</div>
+        <button class="cidl" onclick="removeCart(${item.id})">✕</button>
       </div>
     </div>`).join('');
 }
 function toggleCart(id){const i=cart.find(x=>x.id===id);if(i)i.done=!i.done;saveCart();renderCart();}
 function removeCart(id){cart=cart.filter(i=>i.id!==id);saveCart();renderCart();}
 
-// ============================
-// RANKING
-// ============================
-const RANKINGS=[
+// ==================== NOTES ====================
+function saveFreeNote(){
+  localStorage.setItem('expov5FreeNote',document.getElementById('freeNote').value);
+}
+function addManualNote(){
+  const title=document.getElementById('noteTitle').value.trim();
+  const content=document.getElementById('noteContent').value.trim();
+  if(!title&&!content){alert('請輸入標題或內容');return;}
+  manualNotes.push({id:Date.now(),title:title||'筆記',content});
+  saveNotes();renderManualNotes();
+  document.getElementById('noteTitle').value='';
+  document.getElementById('noteContent').value='';
+}
+function deleteNote(id){
+  manualNotes=manualNotes.filter(n=>n.id!==id);
+  saveNotes();renderManualNotes();
+}
+function clearAllNotes(){
+  if(!confirm('確定要清除所有筆記（包含自由筆記）？'))return;
+  manualNotes=[];saveNotes();
+  document.getElementById('freeNote').value='';
+  localStorage.removeItem('expov5FreeNote');
+  renderManualNotes();
+}
+function renderManualNotes(){
+  const list=document.getElementById('manualNotesList');
+  if(!manualNotes.length){list.innerHTML='<div style="font-size:12px;color:var(--text2);text-align:center;padding:12px;">還沒有手動新增的筆記</div>';return;}
+  list.innerHTML=[...manualNotes].reverse().map(n=>`
+    <div class="note-card">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:4px;">
+        <div style="font-size:12px;font-weight:700;color:var(--purple);">${n.title}</div>
+        <button class="note-card-del" onclick="deleteNote(${n.id})">✕ 刪除</button>
+      </div>
+      <div style="font-size:12px;line-height:1.6;white-space:pre-wrap;">${n.content}</div>
+    </div>`).join('');
+}
+function renderCompareNotes(){
+  const list=document.getElementById('compareNotesList');
+  const brands=compareList.map(item=>BRANDS.find(x=>x.name===item.name)).filter(Boolean);
+  if(!brands.length){
+    list.innerHTML='<div style="font-size:12px;color:var(--text2);text-align:center;padding:14px;">比價台填入資料後會自動出現在這裡</div>';
+    return;
+  }
+  const items=brands.map(b=>{
+    const d=cpData[b.name]||{expo:'',net:'',note:''};
+    const expo=d.expo?parseFloat(d.expo):null;
+    const net=d.net?parseFloat(d.net):null;
+    const saving=expo!==null&&net!==null?Math.round((1-expo/net)*100):null;
+    if(!d.expo&&!d.net&&!d.note)return null;
+    return `<div class="note-card">
+      <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:4px;">⚖️ ${b.name}</div>
+      <div style="font-size:12px;line-height:1.7;">
+        ${d.net?`🌐 網路實際價：<b>$${d.net}</b><br>`:''}
+        ${d.expo?`💵 展場現場價：<b>$${d.expo}</b><br>`:''}
+        ${saving!==null?`📊 展場 vs 網路：<b style="color:${saving>0?'var(--green)':'var(--red)'}">${saving>0?`省 ${saving}% ✓`:saving<0?`貴 ${Math.abs(saving)}%`:'同網路價'}</b><br>`:''}
+        ${d.note?`📝 備註：${d.note}`:''}
+      </div>
+    </div>`;
+  }).filter(Boolean);
+  list.innerHTML=items.length?items.join(''):'<div style="font-size:12px;color:var(--text2);text-align:center;padding:14px;">比價台填入資料後會自動出現在這裡</div>';
+}
+
+// ==================== RANKING ====================
+const RANKS=[
   {brand:"好味小姐",score:"5.0",cats:"零食/罐頭",reason:"台灣貓界神級品牌，主食罐和凍乾零食口碑最頂，展場限量必搶"},
   {brand:"汪喵星球",score:"5.0",cats:"多品類",reason:"產品線最廣、品質最穩，展場優惠最多，必逛攤位"},
   {brand:"ZIWI巔峰",score:"5.0",cats:"飼料/罐頭",reason:"紐西蘭品質，肉含量93%，飼料界的愛馬仕"},
@@ -960,43 +1059,40 @@ const KITTEN_TOP=[
   {brand:"ibiyaya",cats:"推車",reason:"從小培養外出習慣，英短重量沒問題"},
 ];
 function renderRanking(){
-  document.getElementById('rankingList').innerHTML=RANKINGS.map((r,i)=>`
-    <div class="rank-card" onclick="selectSuggest('${r.brand}');showPage('brands')">
-      <div class="rank-num ${i===0?'gold':i===1?'silver':i===2?'bronze':''}">${i+1}</div>
-      <div class="rank-info"><div class="rank-brand">${r.brand}</div><div style="font-size:11px;color:var(--text2);">${r.cats}</div><div class="rank-reason">${r.reason}</div></div>
-      <div class="rank-score">CP ${r.score}</div>
+  document.getElementById('rankingList').innerHTML=RANKS.map((r,i)=>`
+    <div class="rkcard" onclick="selectSuggest('${r.brand}');showPage('brands')">
+      <div class="rkn ${i===0?'g':i===1?'s':i===2?'b':''}">${i+1}</div>
+      <div class="rki"><div class="rkbr">${r.brand}</div><div style="font-size:11px;color:var(--text2);">${r.cats}</div><div class="rkr">${r.reason}</div></div>
+      <div class="rks">CP ${r.score}</div>
     </div>`).join('');
   document.getElementById('kittenList').innerHTML=KITTEN_TOP.map(r=>`
-    <div class="rank-card" onclick="selectSuggest('${r.brand}');showPage('brands')">
-      <div style="font-size:20px;width:32px;flex-shrink:0;">🐱</div>
-      <div class="rank-info"><div class="rank-brand">${r.brand}</div><div style="font-size:11px;color:var(--text2);">${r.cats}</div><div class="rank-reason">${r.reason}</div></div>
+    <div class="rkcard" onclick="selectSuggest('${r.brand}');showPage('brands')">
+      <div style="font-size:18px;width:26px;flex-shrink:0;">🐱</div>
+      <div class="rki"><div class="rkbr">${r.brand}</div><div style="font-size:11px;color:var(--text2);">${r.cats}</div><div class="rkr">${r.reason}</div></div>
     </div>`).join('');
 }
 
-// ============================
-// NAV
-// ============================
+// ==================== NAV ====================
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  const idx={brands:0,ai:1,cart:2,compare:3,ranking:4,warning:5}[id];
+  const idx={brands:0,ai:1,cart:2,compare:3,ranking:4,notes:5,warning:6}[id];
   if(idx!==undefined)document.querySelectorAll('.nav-tab')[idx].classList.add('active');
   if(id==='compare')renderCompare();
-  if(id==='ai'){
-    if(!apiKey){document.getElementById('aiNoKey').style.display='block';document.getElementById('aiMain').style.display='none';}
-    else{document.getElementById('aiNoKey').style.display='none';document.getElementById('aiMain').style.display='block';}
-  }
+  if(id==='notes'){renderManualNotes();renderCompareNotes();}
+  if(id==='ai'){initApiKeyUI();}
 }
 
-// ============================
-// INIT
-// ============================
+// ==================== INIT ====================
 initApiKeyUI();
 renderBrands();
 renderCart();
 renderCompare();
 renderRanking();
+// 載入自由筆記
+const savedFreeNote=localStorage.getItem('expov5FreeNote');
+if(savedFreeNote)document.getElementById('freeNote').value=savedFreeNote;
 </script>
 </body>
 </html>
