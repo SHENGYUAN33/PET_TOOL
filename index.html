@@ -510,7 +510,7 @@ async function callGemini(msg){
     generationConfig:{temperature:0.7,maxOutputTokens:1500}
   };
   // 這是目前經測試在 GitHub/Vercel 環境下最穩定的 v1beta 呼叫路徑
-const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
   try{
     const res=await fetch(url,{
       method:'POST',
